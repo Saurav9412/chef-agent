@@ -1,0 +1,10 @@
+__main__.<module> | 2026-09-08 17:04:12,375 | DEBUG | First Logging: Testing
+__main__.<module> | 2026-09-08 17:04:12,376 | INFO | First Logging: Testing
+__main__.<module> | 2026-09-08 17:04:12,376 | WARNING | First Logging: Testing
+__main__.<module> | 2026-09-08 17:04:12,377 | ERROR | First Logging: Testing
+__main__.<module> | 2026-09-08 17:04:12,377 | CRITICAL | First Logging: Testing
+tools.test | 2026-09-08 17:08:08,170 | DEBUG | First Logging: Testing
+tools.test | 2026-09-08 17:08:08,170 | INFO | First Logging: Testing
+tools.test | 2026-09-08 17:08:08,170 | WARNING | First Logging: Testing
+tools.test | 2026-09-08 17:08:08,171 | ERROR | First Logging: Testing
+tools.test | 2026-09-08 17:08:08,171 | CRITICAL | First Logging: Testing
