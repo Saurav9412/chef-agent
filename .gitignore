@@ -13,9 +13,9 @@ venv/
 # Environment variables
 .env
 
+# Logs
+log/
+
 # Local / temporary files
 interface.py
 rough.py
-models.py
-prompts.py
-tools.py
