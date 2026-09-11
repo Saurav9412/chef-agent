@@ -1,5 +1,5 @@
 import requests
-import os
+import os, json
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -8,6 +8,13 @@ from prompts import *
 from models import *
 
 load_dotenv()
+
+def intent_to_prompt_context(
+        intent: RecipeSearchIntent
+    ) -> str:
+    data = intent.model_dump(exclude_none=True)
+    data = {k:v for k,v in data.items() if v not in ("",[],None)}
+    return json.dumps(data, indent=2)
 
 def extract_recipe_info(user_query: UserInputSchema) -> RecipeSearchIntent:
     """
@@ -22,11 +29,11 @@ def extract_recipe_info(user_query: UserInputSchema) -> RecipeSearchIntent:
     """
     structured_groq = get_groq().with_structured_output(
         RecipeSearchIntent,
-        include_raw=True
+        include_raw=False
     )
     structured_gemini = get_gemini().with_structured_output(
         RecipeSearchIntent,
-        include_raw=True
+        include_raw=False
     )
     llm = structured_groq.with_fallbacks([structured_gemini])
 

@@ -20,7 +20,7 @@ class RecipeSearchIntent(BaseModel):
     )
 
     dish : str|None = Field(
-        default_factory = None,
+        default = None,
         description = "Specific dish the user wants to prepare, if any."
     )
 
@@ -30,12 +30,12 @@ class RecipeSearchIntent(BaseModel):
     )
 
     cuisine : str|None = Field(
-        default_factory = None,
+        default = None,
         description = "Cuisine preference, e.g., Italian, Mexican, etc."
     )
 
     serving_size : int|None = Field(
-        default_factory = None,
+        default = None,
         description = "Number of servings the user wants to prepare."
     )
 

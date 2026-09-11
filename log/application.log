@@ -8,3 +8,634 @@ tools.test | 2026-09-08 17:08:08,170 | INFO | First Logging: Testing
 tools.test | 2026-09-08 17:08:08,170 | WARNING | First Logging: Testing
 tools.test | 2026-09-08 17:08:08,171 | ERROR | First Logging: Testing
 tools.test | 2026-09-08 17:08:08,171 | CRITICAL | First Logging: Testing
+__main__.main | 2026-09-11 16:11:33,495 | INFO | Starting recipe extraction application
+google_genai._api_client.get_env_api_key | 2026-09-11 16:12:13,432 | WARNING | Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+urllib3.connectionpool._new_conn | 2026-09-11 16:12:15,257 | DEBUG | Starting new HTTPS connection (1): api.smith.langchain.com:443
+urllib3.connectionpool._make_request | 2026-09-11 16:12:16,357 | DEBUG | https://api.smith.langchain.com:443 "GET /info HTTP/1.1" 200 None
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:12:17,374 | DEBUG | Tracing control thread func compress parallel called
+langsmith.client.tracing_control_thread_func | 2026-09-11 16:12:17,431 | DEBUG | Handling batch in langsmith mode
+urllib3.connectionpool._make_request | 2026-09-11 16:12:17,821 | DEBUG | https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34
+groq._base_client._build_request | 2026-09-11 16:12:19,341 | DEBUG | Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-f98b6054-ba76-4395-accb-f3f1f45fa55f', 'json_data': {'messages': [{'role': 'system', 'content': "\nYou are a recipe-query understanding system. Extract structured recipe search information from the user's request. \nRules: \n- Extract only information explicitly stated or strongly implied. \n- Do not invent ingredients. \n- If the user asks for a specific dish, put it in dish. \n- If the user lists ingredients, put them in ingredients. \n- Separate dietary preferences from hard restrictions. \n- If something is unknown, leave it null or empty. \n- Preserve important cooking preferences.\n"}, {'role': 'user', 'content': 'I have bannana. turmeric, mango. boiled chiken, eggs'}], 'model': 'qwen/qwen3.8-27b', 'n': 1, 'reasoning_effort': None, 'reasoning_format': None, 'service_tier': 'on_demand', 'stop': None, 'stream': False, 'temperature': 0.6, 'tool_choice': {'type': 'function', 'function': {'name': 'RecipeSearchIntent'}}, 'tools': [{'type': 'function', 'function': {'name': 'RecipeSearchIntent', 'description': '', 'parameters': {'properties': {'ingredients': {'description': 'Ingredients the user has or wants to use.', 'items': {'type': 'string'}, 'type': 'array'}, 'dish': {'anyOf': [{'type': 'string'}, {'type': 'null'}], 'description': 'Specific dish the user wants to prepare, if any.'}, 'dietary_restrictions': {'description': 'Dietary preferences such as high-protein or low-carb.', 'items': {'type': 'string'}, 'type': 'array'}, 'cuisine': {'anyOf': [{'type': 'string'}, {'type': 'null'}], 'description': 'Cuisine preference, e.g., Italian, Mexican, etc.'}, 'serving_size': {'anyOf': [{'type': 'integer'}, {'type': 'null'}], 'description': 'Number of servings the user wants to prepare.'}, 'additional_preferences': {'description': 'Any other cooking preferences or constraints, such as quick, easy, spicy, etc', 'items': {'type': 'string'}, 'type': 'array'}}, 'required': ['dish', 'cuisine', 'serving_size'], 'type': 'object'}}}]}}
+groq._base_client.request | 2026-09-11 16:12:19,343 | DEBUG | Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+httpcore.connection.trace | 2026-09-11 16:12:19,345 | DEBUG | connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=None socket_options=None
+httpcore.connection.trace | 2026-09-11 16:12:19,429 | DEBUG | connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000023837B28590>
+httpcore.connection.trace | 2026-09-11 16:12:19,430 | DEBUG | start_tls.started ssl_context=<ssl.SSLContext object at 0x0000023830CE79D0> server_hostname='api.groq.com' timeout=None
+httpcore.connection.trace | 2026-09-11 16:12:19,454 | DEBUG | start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000023837AB1A90>
+httpcore.http11.trace | 2026-09-11 16:12:19,454 | DEBUG | send_request_headers.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:12:19,456 | DEBUG | send_request_headers.complete
+httpcore.http11.trace | 2026-09-11 16:12:19,456 | DEBUG | send_request_body.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:12:19,457 | DEBUG | send_request_body.complete
+httpcore.http11.trace | 2026-09-11 16:12:19,458 | DEBUG | receive_response_headers.started request=<Request [b'POST']>
+langsmith.client._send_compressed_multipart_req | 2026-09-11 16:12:19,854 | DEBUG | Sending compressed multipart request with context: trace=01a0900f-944b-7492-8ba7-fe543d21a48c,id=01a0900f-94d5-7a51-92b4-5cea6fc78aa6; trace=01a0900f-944b-7492-8ba7-fe543d21a48c,id=01a0900f-a434-7a43-a230-fd3d3d69837c; trace=01a0900f-944b-7492-8ba7-fe543d21a48c,id=01a0900f-a435-71e3-b1e1-180229538d78; trace=01a0900f-944b-7492-8ba7-fe543d21a48c,id=01a0900f-a435-71e3-b1e1-18108cff5b4a; trace=01a0900f-944b-7492-8ba7-fe543d21a48c,id=01a0900f-a437-7fa1-baca-17ef9e2164fb
+httpcore.http11.trace | 2026-09-11 16:12:20,033 | DEBUG | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 11 Sep 2026 10:42:22 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'bom'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'8000'), (b'x-ratelimit-remaining-requests', b'999'), (b'x-ratelimit-remaining-tokens', b'6772'), (b'x-ratelimit-reset-requests', b'1m26.4s'), (b'x-ratelimit-reset-tokens', b'9.21s'), (b'x-request-id', b'req_01m280zb5pes38m2j4zethnw1n'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'set-cookie', b'__cf_bm=SIcbBXqTreQZ6P1Gb6Y1wzQ17BDo9E8LsIwNgG9EFPY-1789123341.4645858-1.0.1.1-1WiQzTQALsTzibK3ldTiyBFmB5EuGKf4vl6cbSjOYCXx1EZ685EAmbwuEgpsnICl1BUWDYqGocr2xGQ2bxINb1fXmaRNaddPFtgrYPgbcKSdW0i.nRCJUHCNNzB.X89N; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Fri, 11 Sep 2026 11:12:22 GMT'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a39610b42ebd8aec-DEL'), (b'alt-svc', b'h3=":443"; ma=86400')])
+httpx._send_single_request | 2026-09-11 16:12:20,035 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+httpcore.http11.trace | 2026-09-11 16:12:20,037 | DEBUG | receive_response_body.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:12:20,039 | DEBUG | receive_response_body.complete
+httpcore.http11.trace | 2026-09-11 16:12:20,040 | DEBUG | response_closed.started
+httpcore.http11.trace | 2026-09-11 16:12:20,041 | DEBUG | response_closed.complete
+groq._base_client.request | 2026-09-11 16:12:20,042 | DEBUG | HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Fri, 11 Sep 2026 10:42:22 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'bom', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '8000', 'x-ratelimit-remaining-requests': '999', 'x-ratelimit-remaining-tokens': '6772', 'x-ratelimit-reset-requests': '1m26.4s', 'x-ratelimit-reset-tokens': '9.21s', 'x-request-id': 'req_01m280zb5pes38m2j4zethnw1n', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'set-cookie': '__cf_bm=SIcbBXqTreQZ6P1Gb6Y1wzQ17BDo9E8LsIwNgG9EFPY-1789123341.4645858-1.0.1.1-1WiQzTQALsTzibK3ldTiyBFmB5EuGKf4vl6cbSjOYCXx1EZ685EAmbwuEgpsnICl1BUWDYqGocr2xGQ2bxINb1fXmaRNaddPFtgrYPgbcKSdW0i.nRCJUHCNNzB.X89N; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Fri, 11 Sep 2026 11:12:22 GMT', 'strict-transport-security': 'max-age=15552000', 'content-encoding': 'gzip', 'cf-ray': 'a39610b42ebd8aec-DEL', 'alt-svc': 'h3=":443"; ma=86400'})
+asyncio.__init__ | 2026-09-11 16:12:20,078 | DEBUG | Using proactor: IocpProactor
+urllib3.connectionpool._make_request | 2026-09-11 16:12:20,175 | DEBUG | https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34
+langsmith.client._send_compressed_multipart_req | 2026-09-11 16:12:20,683 | DEBUG | Sending compressed multipart request with context: trace=01a0900f-944b-7492-8ba7-fe543d21a48c,id=01a0900f-a437-7fa1-baca-17ef9e2164fb; trace=01a0900f-944b-7492-8ba7-fe543d21a48c,id=01a0900f-a435-71e3-b1e1-18108cff5b4a; trace=01a0900f-944b-7492-8ba7-fe543d21a48c,id=01a0900f-a723-78f3-9228-ea02cfd5af78; trace=01a0900f-944b-7492-8ba7-fe543d21a48c,id=01a0900f-a724-72a0-9db2-2e1b841bacb3; trace=01a0900f-944b-7492-8ba7-fe543d21a48c,id=01a0900f-a725-7bb1-a0a2-190c5b3f9fba; trace=01a0900f-944b-7492-8ba7-fe543d21a48c,id=01a0900f-a726-7a01-8cbb-6391525c3126; trace=01a0900f-944b-7492-8ba7-fe543d21a48c,id=01a0900f-a726-7a01-8cbb-63af4d7993e9; trace=01a0900f-944b-7492-8ba7-fe543d21a48c,id=01a0900f-a726-7a01-8cbb-63af4d7993e9; trace=01a0900f-944b-7492-8ba7-fe543d21a48c,id=01a0900f-a728-7421-9c00-67afc1842708; trace=01a0900f-944b-7492-8ba7-fe543d21a48c,id=01a0900f-a728-7421-9c00-67afc1842708; trace=01a0900f-944b-7492-8ba7-fe543d21a48c,id=01a0900f-a726-7a01-8cbb-6391525c3126; trace=01a0900f-944b-7492-8ba7-fe543d21a48c,id=01a0900f-a72a-7fe3-8d1a-6cb569cc560e; trace=01a0900f-944b-7492-8ba7-fe543d21a48c,id=01a0900f-a72a-7fe3-8d1a-6cb569cc560e; trace=01a0900f-944b-7492-8ba7-fe543d21a48c,id=01a0900f-a725-7bb1-a0a2-190c5b3f9fba; trace=01a0900f-944b-7492-8ba7-fe543d21a48c,id=01a0900f-a724-72a0-9db2-2e1b841bacb3; trace=01a0900f-944b-7492-8ba7-fe543d21a48c,id=01a0900f-a723-78f3-9228-ea02cfd5af78; trace=01a0900f-944b-7492-8ba7-fe543d21a48c,id=01a0900f-a435-71e3-b1e1-180229538d78; trace=01a0900f-944b-7492-8ba7-fe543d21a48c,id=01a0900f-a434-7a43-a230-fd3d3d69837c; trace=01a0900f-944b-7492-8ba7-fe543d21a48c,id=01a0900f-944b-7492-8ba7-fe543d21a48c
+urllib3.connectionpool._make_request | 2026-09-11 16:12:21,011 | DEBUG | https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34
+__main__.main | 2026-09-11 16:12:21,478 | ERROR | Application failed during execution: Message dict must contain 'role' and 'content' keys, got {'raw': AIMessage(content='', additional_kwargs={'tool_calls': [{'id': 'y713v84h0', 'function': {'arguments': '{"additional_preferences":[],"cuisine":null,"dietary_restrictions":[],"dish":null,"ingredients":["banana","turmeric","mango","boiled chicken","eggs"],"serving_size":null}', 'name': 'RecipeSearchIntent'}, 'type': 'function'}]}, response_metadata={'token_usage': {'completion_tokens': 112, 'prompt_tokens': 599, 'total_tokens': 711, 'completion_time': 0.225551212, 'completion_tokens_details': None, 'prompt_time': 0.058423746, 'prompt_tokens_details': None, 'queue_time': 0.243116851, 'total_time': 0.283974958}, 'model_name': 'qwen/qwen3.8-27b', 'system_fingerprint': 'fp_61e8d148b4', 'service_tier': 'on_demand', 'finish_reason': 'tool_calls', 'logprobs': None, 'model_provider': 'groq'}, id='lc_run--01a0900f-a437-7fa1-baca-17ef9e2164fb-0', tool_calls=[{'name': 'RecipeSearchIntent', 'args': {'additional_preferences': [], 'cuisine': None, 'dietary_restrictions': [], 'dish': None, 'ingredients': ['banana', 'turmeric', 'mango', 'boiled chicken', 'eggs'], 'serving_size': None}, 'id': 'y713v84h0', 'type': 'tool_call'}], invalid_tool_calls=[], usage_metadata={'input_tokens': 599, 'output_tokens': 112, 'total_tokens': 711}), 'parsed': RecipeSearchIntent(ingredients=['banana', 'turmeric', 'mango', 'boiled chicken', 'eggs'], dish=None, dietary_restrictions=[], cuisine=None, serving_size=None, additional_preferences=[]), 'parsing_error': None}
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/MESSAGE_COERCION_FAILURE 
+Traceback (most recent call last):
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langchain_core\messages\utils.py", line 764, in _convert_to_message
+    msg_type = msg_kwargs.pop("role")
+KeyError: 'role'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langchain_core\messages\utils.py", line 766, in _convert_to_message
+    msg_type = msg_kwargs.pop("type")
+KeyError: 'type'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\main.py", line 32, in main
+    response = agent.invoke(
+        {
+            "messages": extracted_info
+        }
+    )
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\pregel\main.py", line 3913, in invoke
+    for chunk in self.stream(
+                 ~~~~~~~~~~~^
+        input,
+        ^^^^^^
+    ...<11 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ):
+    ^
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\pregel\main.py", line 2984, in stream
+    loop.after_tick()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\pregel\_loop.py", line 692, in after_tick
+    self.updated_channels = apply_writes(
+                            ~~~~~~~~~~~~^
+        self.checkpoint,
+        ^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        self.trigger_to_nodes,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\pregel\_algo.py", line 319, in apply_writes
+    if channels[chan].update(vals) and next_version is not None:
+       ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\channels\binop.py", line 143, in update
+    self.value = self.operator(self.value, value)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\graph\message.py", line 46, in _add_messages
+    return func(left, right, **kwargs)
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\graph\message.py", line 200, in add_messages
+    for m in convert_to_messages(right)
+             ~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langchain_core\messages\utils.py", line 803, in convert_to_messages
+    return [_convert_to_message(m) for m in messages]
+            ~~~~~~~~~~~~~~~~~~~^^^
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langchain_core\messages\utils.py", line 774, in _convert_to_message
+    raise ValueError(msg) from e
+ValueError: Message dict must contain 'role' and 'content' keys, got {'raw': AIMessage(content='', additional_kwargs={'tool_calls': [{'id': 'y713v84h0', 'function': {'arguments': '{"additional_preferences":[],"cuisine":null,"dietary_restrictions":[],"dish":null,"ingredients":["banana","turmeric","mango","boiled chicken","eggs"],"serving_size":null}', 'name': 'RecipeSearchIntent'}, 'type': 'function'}]}, response_metadata={'token_usage': {'completion_tokens': 112, 'prompt_tokens': 599, 'total_tokens': 711, 'completion_time': 0.225551212, 'completion_tokens_details': None, 'prompt_time': 0.058423746, 'prompt_tokens_details': None, 'queue_time': 0.243116851, 'total_time': 0.283974958}, 'model_name': 'qwen/qwen3.8-27b', 'system_fingerprint': 'fp_61e8d148b4', 'service_tier': 'on_demand', 'finish_reason': 'tool_calls', 'logprobs': None, 'model_provider': 'groq'}, id='lc_run--01a0900f-a437-7fa1-baca-17ef9e2164fb-0', tool_calls=[{'name': 'RecipeSearchIntent', 'args': {'additional_preferences': [], 'cuisine': None, 'dietary_restrictions': [], 'dish': None, 'ingredients': ['banana', 'turmeric', 'mango', 'boiled chicken', 'eggs'], 'serving_size': None}, 'id': 'y713v84h0', 'type': 'tool_call'}], invalid_tool_calls=[], usage_metadata={'input_tokens': 599, 'output_tokens': 112, 'total_tokens': 711}), 'parsed': RecipeSearchIntent(ingredients=['banana', 'turmeric', 'mango', 'boiled chicken', 'eggs'], dish=None, dietary_restrictions=[], cuisine=None, serving_size=None, additional_preferences=[]), 'parsing_error': None}
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/MESSAGE_COERCION_FAILURE 
+langsmith.client.keep_thread_active | 2026-09-11 16:12:21,542 | DEBUG | Main thread is dead, stopping compression thread
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:12:21,542 | DEBUG | Compression thread final flush: trace_count=2
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:12:21,544 | DEBUG | Compression thread final flush: sending 2978 bytes
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:12:21,546 | DEBUG | Compression thread final flush: thread pool shutdown, sending synchronously
+langsmith.client._send_compressed_multipart_req | 2026-09-11 16:12:21,547 | DEBUG | Sending compressed multipart request with context: trace=01a0900f-ac14-7600-8d94-195a6fb4de32,id=01a0900f-ac14-7600-8d94-195a6fb4de32; trace=01a0900f-ac14-7600-8d94-195a6fb4de32,id=01a0900f-ac14-7600-8d94-195a6fb4de32
+langsmith.client.keep_thread_active | 2026-09-11 16:12:21,621 | DEBUG | Main thread is dead, stopping tracing thread
+langsmith.client.tracing_control_thread_func | 2026-09-11 16:12:21,622 | DEBUG | Tracing thread draining queue on exit: qsize=0
+langsmith.client.tracing_control_thread_func | 2026-09-11 16:12:21,623 | DEBUG | Tracing control thread is shutting down
+urllib3.connectionpool._make_request | 2026-09-11 16:12:21,867 | DEBUG | https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:12:21,868 | DEBUG | Compression thread final flush: sync send completed
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:12:21,869 | DEBUG | Compressed traces control thread is shutting down
+langsmith.client.close_session | 2026-09-11 16:12:21,870 | DEBUG | Closing Client.session
+langsmith.client.close_session | 2026-09-11 16:12:21,875 | DEBUG | Closing Client.session
+httpcore.connection.trace | 2026-09-11 16:12:21,942 | DEBUG | close.started
+httpcore.connection.trace | 2026-09-11 16:12:21,943 | DEBUG | close.complete
+__main__.main | 2026-09-11 16:32:34,393 | INFO | Starting recipe extraction application
+google_genai._api_client.get_env_api_key | 2026-09-11 16:32:41,262 | WARNING | Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+urllib3.connectionpool._new_conn | 2026-09-11 16:32:42,933 | DEBUG | Starting new HTTPS connection (1): api.smith.langchain.com:443
+groq._base_client._build_request | 2026-09-11 16:32:43,275 | DEBUG | Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-d3821cb6-e868-4b3c-81ce-e9c4cc33c365', 'json_data': {'messages': [{'role': 'system', 'content': "\nYou are a recipe-query understanding system. Extract structured recipe search information from the user's request. \nRules: \n- Extract only information explicitly stated or strongly implied. \n- Do not invent ingredients. \n- If the user asks for a specific dish, put it in dish. \n- If the user lists ingredients, put them in ingredients. \n- Separate dietary preferences from hard restrictions. \n- If something is unknown, leave it null or empty. \n- Preserve important cooking preferences.\n"}, {'role': 'user', 'content': 'I have bannana. turmeric, mango. boiled chiken, eggs'}], 'model': 'qwen/qwen3.8-27b', 'n': 1, 'reasoning_effort': None, 'reasoning_format': None, 'service_tier': 'on_demand', 'stop': None, 'stream': False, 'temperature': 0.6, 'tool_choice': {'type': 'function', 'function': {'name': 'RecipeSearchIntent'}}, 'tools': [{'type': 'function', 'function': {'name': 'RecipeSearchIntent', 'description': '', 'parameters': {'properties': {'ingredients': {'description': 'Ingredients the user has or wants to use.', 'items': {'type': 'string'}, 'type': 'array'}, 'dish': {'anyOf': [{'type': 'string'}, {'type': 'null'}], 'default': None, 'description': 'Specific dish the user wants to prepare, if any.'}, 'dietary_restrictions': {'description': 'Dietary preferences such as high-protein or low-carb.', 'items': {'type': 'string'}, 'type': 'array'}, 'cuisine': {'anyOf': [{'type': 'string'}, {'type': 'null'}], 'default': None, 'description': 'Cuisine preference, e.g., Italian, Mexican, etc.'}, 'serving_size': {'anyOf': [{'type': 'integer'}, {'type': 'null'}], 'default': None, 'description': 'Number of servings the user wants to prepare.'}, 'additional_preferences': {'description': 'Any other cooking preferences or constraints, such as quick, easy, spicy, etc', 'items': {'type': 'string'}, 'type': 'array'}}, 'type': 'object'}}}]}}
+groq._base_client.request | 2026-09-11 16:32:43,277 | DEBUG | Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+httpcore.connection.trace | 2026-09-11 16:32:43,278 | DEBUG | connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=None socket_options=None
+httpcore.connection.trace | 2026-09-11 16:32:43,317 | DEBUG | connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000002C80AD24980>
+httpcore.connection.trace | 2026-09-11 16:32:43,317 | DEBUG | start_tls.started ssl_context=<ssl.SSLContext object at 0x000002C803EE7BB0> server_hostname='api.groq.com' timeout=None
+httpcore.connection.trace | 2026-09-11 16:32:43,337 | DEBUG | start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000002C80AC89E50>
+httpcore.http11.trace | 2026-09-11 16:32:43,338 | DEBUG | send_request_headers.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:32:43,339 | DEBUG | send_request_headers.complete
+httpcore.http11.trace | 2026-09-11 16:32:43,341 | DEBUG | send_request_body.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:32:43,342 | DEBUG | send_request_body.complete
+httpcore.http11.trace | 2026-09-11 16:32:43,342 | DEBUG | receive_response_headers.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:32:43,778 | DEBUG | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 11 Sep 2026 11:02:45 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'bom'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'8000'), (b'x-ratelimit-remaining-requests', b'999'), (b'x-ratelimit-remaining-tokens', b'6973'), (b'x-ratelimit-reset-requests', b'1m26.4s'), (b'x-ratelimit-reset-tokens', b'7.702s'), (b'x-request-id', b'req_01m2824pcdef3rgd1y6z3va945'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'set-cookie', b'__cf_bm=058Lx5UjPrIVUwNK1lGM6STntZP_dpXQcq6tZ7Wk670-1789124565.3544269-1.0.1.1-f02cgUWAyDdtD6zXzOPZvwGoIKQJxxeXLbETz6Tgudm9NWhXGSvnPrnmKMOYYChHEsiHSp3w.s1JHTKft9Nnq6y_cTFGLHnD_t5oF6ziqMekJR6m9Vo.Yve8nY8qbqgR; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Fri, 11 Sep 2026 11:32:45 GMT'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a3962e957cc3c9b2-DEL'), (b'alt-svc', b'h3=":443"; ma=86400')])
+httpx._send_single_request | 2026-09-11 16:32:43,780 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+httpcore.http11.trace | 2026-09-11 16:32:43,781 | DEBUG | receive_response_body.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:32:43,784 | DEBUG | receive_response_body.complete
+httpcore.http11.trace | 2026-09-11 16:32:43,784 | DEBUG | response_closed.started
+httpcore.http11.trace | 2026-09-11 16:32:43,785 | DEBUG | response_closed.complete
+groq._base_client.request | 2026-09-11 16:32:43,786 | DEBUG | HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Fri, 11 Sep 2026 11:02:45 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'bom', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '8000', 'x-ratelimit-remaining-requests': '999', 'x-ratelimit-remaining-tokens': '6973', 'x-ratelimit-reset-requests': '1m26.4s', 'x-ratelimit-reset-tokens': '7.702s', 'x-request-id': 'req_01m2824pcdef3rgd1y6z3va945', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'set-cookie': '__cf_bm=058Lx5UjPrIVUwNK1lGM6STntZP_dpXQcq6tZ7Wk670-1789124565.3544269-1.0.1.1-f02cgUWAyDdtD6zXzOPZvwGoIKQJxxeXLbETz6Tgudm9NWhXGSvnPrnmKMOYYChHEsiHSp3w.s1JHTKft9Nnq6y_cTFGLHnD_t5oF6ziqMekJR6m9Vo.Yve8nY8qbqgR; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Fri, 11 Sep 2026 11:32:45 GMT', 'strict-transport-security': 'max-age=15552000', 'content-encoding': 'gzip', 'cf-ray': 'a3962e957cc3c9b2-DEL', 'alt-svc': 'h3=":443"; ma=86400'})
+asyncio.__init__ | 2026-09-11 16:32:43,818 | DEBUG | Using proactor: IocpProactor
+urllib3.connectionpool._make_request | 2026-09-11 16:32:43,898 | DEBUG | https://api.smith.langchain.com:443 "GET /info HTTP/1.1" 200 None
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:32:43,900 | DEBUG | Tracing control thread func compress parallel called
+langsmith.client.tracing_control_thread_func | 2026-09-11 16:32:43,952 | DEBUG | Handling batch in langsmith mode
+urllib3.connectionpool._make_request | 2026-09-11 16:32:44,472 | DEBUG | https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34
+__main__.main | 2026-09-11 16:32:44,962 | INFO | extracted_info = {'raw': AIMessage(content='', additional_kwargs={'tool_calls': [{'id': 'aj85hdekn', 'function': {'arguments': '{"ingredients":["banana","turmeric","mango","boiled chicken","eggs"]}', 'name': 'RecipeSearchIntent'}, 'type': 'function'}]}, response_metadata={'token_usage': {'completion_tokens': 47, 'prompt_tokens': 599, 'total_tokens': 646, 'completion_time': 0.096512408, 'completion_tokens_details': None, 'prompt_time': 0.04970248, 'prompt_tokens_details': None, 'queue_time': 0.242632139, 'total_time': 0.146214888}, 'model_name': 'qwen/qwen3.8-27b', 'system_fingerprint': 'fp_61e8d148b4', 'service_tier': 'on_demand', 'finish_reason': 'tool_calls', 'logprobs': None, 'model_provider': 'groq'}, id='lc_run--01a09022-5143-7451-b40a-58c9eeaa0321-0', tool_calls=[{'name': 'RecipeSearchIntent', 'args': {'ingredients': ['banana', 'turmeric', 'mango', 'boiled chicken', 'eggs']}, 'id': 'aj85hdekn', 'type': 'tool_call'}], invalid_tool_calls=[], usage_metadata={'input_tokens': 599, 'output_tokens': 47, 'total_tokens': 646}), 'parsed': RecipeSearchIntent(ingredients=['banana', 'turmeric', 'mango', 'boiled chicken', 'eggs'], dish=None, dietary_restrictions=[], cuisine=None, serving_size=None, additional_preferences=[]), 'parsing_error': None}
+
+__main__.main | 2026-09-11 16:32:44,962 | ERROR | Application failed during execution: 'dict' object has no attribute 'model_dump'
+Traceback (most recent call last):
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\main.py", line 39, in main
+    context = intent_to_prompt_context(extracted_info)
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\utils.py", line 15, in intent_to_prompt_context
+    data = intent.model_dump(exclude_none=True)
+           ^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'model_dump'
+langsmith.client.keep_thread_active | 2026-09-11 16:32:44,974 | DEBUG | Main thread is dead, stopping compression thread
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:32:44,976 | DEBUG | Compression thread final flush: trace_count=0
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:32:44,976 | DEBUG | Compression thread final flush: no data to send
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:32:44,979 | DEBUG | Compressed traces control thread is shutting down
+langsmith.client.keep_thread_active | 2026-09-11 16:32:44,990 | DEBUG | Main thread is dead, stopping tracing thread
+langsmith.client.tracing_control_thread_func | 2026-09-11 16:32:44,991 | DEBUG | Tracing thread draining queue on exit: qsize=0
+langsmith.client.tracing_control_thread_func | 2026-09-11 16:32:44,992 | DEBUG | Tracing control thread is shutting down
+langsmith.client.close_session | 2026-09-11 16:32:44,995 | DEBUG | Closing Client.session
+langsmith.client.close_session | 2026-09-11 16:32:44,997 | DEBUG | Closing Client.session
+httpcore.connection.trace | 2026-09-11 16:32:45,065 | DEBUG | close.started
+httpcore.connection.trace | 2026-09-11 16:32:45,066 | DEBUG | close.complete
+__main__.main | 2026-09-11 16:35:54,474 | INFO | Starting recipe extraction application
+google_genai._api_client.get_env_api_key | 2026-09-11 16:35:58,472 | WARNING | Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+urllib3.connectionpool._new_conn | 2026-09-11 16:36:00,151 | DEBUG | Starting new HTTPS connection (1): api.smith.langchain.com:443
+groq._base_client._build_request | 2026-09-11 16:36:00,476 | DEBUG | Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-1ef3a673-5dba-402e-9cf2-b7c33d85d159', 'json_data': {'messages': [{'role': 'system', 'content': "\nYou are a recipe-query understanding system. Extract structured recipe search information from the user's request. \nRules: \n- Extract only information explicitly stated or strongly implied. \n- Do not invent ingredients. \n- If the user asks for a specific dish, put it in dish. \n- If the user lists ingredients, put them in ingredients. \n- Separate dietary preferences from hard restrictions. \n- If something is unknown, leave it null or empty. \n- Preserve important cooking preferences.\n"}, {'role': 'user', 'content': 'I have bannana. turmeric, mango. boiled chiken, eggs'}], 'model': 'qwen/qwen3.8-27b', 'n': 1, 'reasoning_effort': None, 'reasoning_format': None, 'service_tier': 'on_demand', 'stop': None, 'stream': False, 'temperature': 0.6, 'tool_choice': {'type': 'function', 'function': {'name': 'RecipeSearchIntent'}}, 'tools': [{'type': 'function', 'function': {'name': 'RecipeSearchIntent', 'description': '', 'parameters': {'properties': {'ingredients': {'description': 'Ingredients the user has or wants to use.', 'items': {'type': 'string'}, 'type': 'array'}, 'dish': {'anyOf': [{'type': 'string'}, {'type': 'null'}], 'default': None, 'description': 'Specific dish the user wants to prepare, if any.'}, 'dietary_restrictions': {'description': 'Dietary preferences such as high-protein or low-carb.', 'items': {'type': 'string'}, 'type': 'array'}, 'cuisine': {'anyOf': [{'type': 'string'}, {'type': 'null'}], 'default': None, 'description': 'Cuisine preference, e.g., Italian, Mexican, etc.'}, 'serving_size': {'anyOf': [{'type': 'integer'}, {'type': 'null'}], 'default': None, 'description': 'Number of servings the user wants to prepare.'}, 'additional_preferences': {'description': 'Any other cooking preferences or constraints, such as quick, easy, spicy, etc', 'items': {'type': 'string'}, 'type': 'array'}}, 'type': 'object'}}}]}}
+groq._base_client.request | 2026-09-11 16:36:00,479 | DEBUG | Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+httpcore.connection.trace | 2026-09-11 16:36:00,479 | DEBUG | connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=None socket_options=None
+httpcore.connection.trace | 2026-09-11 16:36:00,490 | DEBUG | connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x00000258481102F0>
+httpcore.connection.trace | 2026-09-11 16:36:00,491 | DEBUG | start_tls.started ssl_context=<ssl.SSLContext object at 0x00000258412E7BB0> server_hostname='api.groq.com' timeout=None
+httpcore.connection.trace | 2026-09-11 16:36:00,512 | DEBUG | start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000025848095950>
+httpcore.http11.trace | 2026-09-11 16:36:00,512 | DEBUG | send_request_headers.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:36:00,514 | DEBUG | send_request_headers.complete
+httpcore.http11.trace | 2026-09-11 16:36:00,516 | DEBUG | send_request_body.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:36:00,516 | DEBUG | send_request_body.complete
+httpcore.http11.trace | 2026-09-11 16:36:00,517 | DEBUG | receive_response_headers.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:36:00,918 | DEBUG | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 11 Sep 2026 11:06:02 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'bom'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'8000'), (b'x-ratelimit-remaining-requests', b'999'), (b'x-ratelimit-remaining-tokens', b'7354'), (b'x-ratelimit-reset-requests', b'1m26.4s'), (b'x-ratelimit-reset-tokens', b'4.845s'), (b'x-request-id', b'req_01m282apy3es4t4swzsfgsx0nb'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'set-cookie', b'__cf_bm=Wwe50L5Ynw7l7jilmRTLMgvwdByYvXJih2pM3HOMJUs-1789124762.5325918-1.0.1.1-P_Dazx9SklbrHgTdwgA8GFpk0voESMudIfd0ex09Y79JHMPX.FmwJ5vGG2jOj0s81KYkIWpEAxovrmBqsejhH10MKEQiQZ9ByE2flaK92yn1cHGRkh7l6KuHX0IGC79L; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Fri, 11 Sep 2026 11:36:02 GMT'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a3963365de6814c8-DEL'), (b'alt-svc', b'h3=":443"; ma=86400')])
+httpx._send_single_request | 2026-09-11 16:36:00,921 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+httpcore.http11.trace | 2026-09-11 16:36:00,922 | DEBUG | receive_response_body.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:36:00,924 | DEBUG | receive_response_body.complete
+httpcore.http11.trace | 2026-09-11 16:36:00,925 | DEBUG | response_closed.started
+httpcore.http11.trace | 2026-09-11 16:36:00,926 | DEBUG | response_closed.complete
+groq._base_client.request | 2026-09-11 16:36:00,926 | DEBUG | HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Fri, 11 Sep 2026 11:06:02 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'bom', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '8000', 'x-ratelimit-remaining-requests': '999', 'x-ratelimit-remaining-tokens': '7354', 'x-ratelimit-reset-requests': '1m26.4s', 'x-ratelimit-reset-tokens': '4.845s', 'x-request-id': 'req_01m282apy3es4t4swzsfgsx0nb', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'set-cookie': '__cf_bm=Wwe50L5Ynw7l7jilmRTLMgvwdByYvXJih2pM3HOMJUs-1789124762.5325918-1.0.1.1-P_Dazx9SklbrHgTdwgA8GFpk0voESMudIfd0ex09Y79JHMPX.FmwJ5vGG2jOj0s81KYkIWpEAxovrmBqsejhH10MKEQiQZ9ByE2flaK92yn1cHGRkh7l6KuHX0IGC79L; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Fri, 11 Sep 2026 11:36:02 GMT', 'strict-transport-security': 'max-age=15552000', 'content-encoding': 'gzip', 'cf-ray': 'a3963365de6814c8-DEL', 'alt-svc': 'h3=":443"; ma=86400'})
+asyncio.__init__ | 2026-09-11 16:36:00,952 | DEBUG | Using proactor: IocpProactor
+urllib3.connectionpool._make_request | 2026-09-11 16:36:01,081 | DEBUG | https://api.smith.langchain.com:443 "GET /info HTTP/1.1" 200 None
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:36:01,083 | DEBUG | Tracing control thread func compress parallel called
+langsmith.client.tracing_control_thread_func | 2026-09-11 16:36:01,141 | DEBUG | Handling batch in langsmith mode
+urllib3.connectionpool._make_request | 2026-09-11 16:36:01,481 | DEBUG | https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34
+__main__.main | 2026-09-11 16:36:02,096 | INFO | extracted_info = RecipeSearchIntent(ingredients=['banana', 'turmeric', 'mango', 'boiled chicken', 'eggs'], dish=None, dietary_restrictions=[], cuisine=None, serving_size=None, additional_preferences=[])
+
+__main__.main | 2026-09-11 16:36:02,097 | INFO | parsed intent: {
+  "ingredients": [
+    "banana",
+    "turmeric",
+    "mango",
+    "boiled chicken",
+    "eggs"
+  ]
+}
+__main__.main | 2026-09-11 16:36:02,098 | ERROR | Application failed during execution: Pregel.invoke() missing 1 required positional argument: 'input'
+Traceback (most recent call last):
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\main.py", line 41, in main
+    response = agent.invoke(
+        messages = [
+    ...<4 lines>...
+        ]
+    )
+TypeError: Pregel.invoke() missing 1 required positional argument: 'input'
+langsmith.client.keep_thread_active | 2026-09-11 16:36:02,155 | DEBUG | Main thread is dead, stopping compression thread
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:36:02,155 | DEBUG | Compression thread final flush: trace_count=0
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:36:02,156 | DEBUG | Compression thread final flush: no data to send
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:36:02,157 | DEBUG | Compressed traces control thread is shutting down
+langsmith.client.keep_thread_active | 2026-09-11 16:36:02,250 | DEBUG | Main thread is dead, stopping tracing thread
+langsmith.client.tracing_control_thread_func | 2026-09-11 16:36:02,250 | DEBUG | Tracing thread draining queue on exit: qsize=0
+langsmith.client.tracing_control_thread_func | 2026-09-11 16:36:02,254 | DEBUG | Tracing control thread is shutting down
+langsmith.client.close_session | 2026-09-11 16:36:02,255 | DEBUG | Closing Client.session
+langsmith.client.close_session | 2026-09-11 16:36:02,257 | DEBUG | Closing Client.session
+httpcore.connection.trace | 2026-09-11 16:36:02,324 | DEBUG | close.started
+httpcore.connection.trace | 2026-09-11 16:36:02,325 | DEBUG | close.complete
+__main__.main | 2026-09-11 16:41:49,516 | INFO | Starting recipe extraction application
+google_genai._api_client.get_env_api_key | 2026-09-11 16:41:54,360 | WARNING | Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+urllib3.connectionpool._new_conn | 2026-09-11 16:41:56,033 | DEBUG | Starting new HTTPS connection (1): api.smith.langchain.com:443
+groq._base_client._build_request | 2026-09-11 16:41:56,361 | DEBUG | Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-5d7e9c8d-e84e-416b-8ebd-a7f42fc3bb00', 'json_data': {'messages': [{'role': 'system', 'content': "\nYou are a recipe-query understanding system. Extract structured recipe search information from the user's request. \nRules: \n- Extract only information explicitly stated or strongly implied. \n- Do not invent ingredients. \n- If the user asks for a specific dish, put it in dish. \n- If the user lists ingredients, put them in ingredients. \n- Separate dietary preferences from hard restrictions. \n- If something is unknown, leave it null or empty. \n- Preserve important cooking preferences.\n"}, {'role': 'user', 'content': 'I have bannana. turmeric, mango. boiled chiken, eggs'}], 'model': 'qwen/qwen3.8-27b', 'n': 1, 'reasoning_effort': None, 'reasoning_format': None, 'service_tier': 'on_demand', 'stop': None, 'stream': False, 'temperature': 0.6, 'tool_choice': {'type': 'function', 'function': {'name': 'RecipeSearchIntent'}}, 'tools': [{'type': 'function', 'function': {'name': 'RecipeSearchIntent', 'description': '', 'parameters': {'properties': {'ingredients': {'description': 'Ingredients the user has or wants to use.', 'items': {'type': 'string'}, 'type': 'array'}, 'dish': {'anyOf': [{'type': 'string'}, {'type': 'null'}], 'default': None, 'description': 'Specific dish the user wants to prepare, if any.'}, 'dietary_restrictions': {'description': 'Dietary preferences such as high-protein or low-carb.', 'items': {'type': 'string'}, 'type': 'array'}, 'cuisine': {'anyOf': [{'type': 'string'}, {'type': 'null'}], 'default': None, 'description': 'Cuisine preference, e.g., Italian, Mexican, etc.'}, 'serving_size': {'anyOf': [{'type': 'integer'}, {'type': 'null'}], 'default': None, 'description': 'Number of servings the user wants to prepare.'}, 'additional_preferences': {'description': 'Any other cooking preferences or constraints, such as quick, easy, spicy, etc', 'items': {'type': 'string'}, 'type': 'array'}}, 'type': 'object'}}}]}}
+groq._base_client.request | 2026-09-11 16:41:56,363 | DEBUG | Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+httpcore.connection.trace | 2026-09-11 16:41:56,365 | DEBUG | connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=None socket_options=None
+httpcore.connection.trace | 2026-09-11 16:41:56,411 | DEBUG | connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000002147EE102F0>
+httpcore.connection.trace | 2026-09-11 16:41:56,412 | DEBUG | start_tls.started ssl_context=<ssl.SSLContext object at 0x000002147DFE7BB0> server_hostname='api.groq.com' timeout=None
+httpcore.connection.trace | 2026-09-11 16:41:56,436 | DEBUG | start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000002147EB89950>
+httpcore.http11.trace | 2026-09-11 16:41:56,436 | DEBUG | send_request_headers.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:41:56,438 | DEBUG | send_request_headers.complete
+httpcore.http11.trace | 2026-09-11 16:41:56,438 | DEBUG | send_request_body.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:41:56,439 | DEBUG | send_request_body.complete
+httpcore.http11.trace | 2026-09-11 16:41:56,440 | DEBUG | receive_response_headers.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:41:56,941 | DEBUG | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 11 Sep 2026 11:11:58 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'bom'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'8000'), (b'x-ratelimit-remaining-requests', b'999'), (b'x-ratelimit-remaining-tokens', b'6948'), (b'x-ratelimit-reset-requests', b'1m26.4s'), (b'x-ratelimit-reset-tokens', b'7.89s'), (b'x-request-id', b'req_01m282njgtewrsvkacvstz9hb3'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'set-cookie', b'__cf_bm=PzUqJ1K7ksh8LJNvz_tSF87t0J_5v0WLP9gZf0spKoQ-1789125118.4563365-1.0.1.1-YBrdiDYHzM7dU_09CGJTpuFjRyDPO.NbyOKk4GiHYs8ivbNEvi.WwRL4VhA2A_ewHnSCStoMjc_wSpA7FEbgyrMjYBWYz5E.W7UgJFBmcZcFGWD5BXTt2o6rRPg3rS6f; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Fri, 11 Sep 2026 11:41:58 GMT'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a3963c165c10f465-DEL'), (b'alt-svc', b'h3=":443"; ma=86400')])
+httpx._send_single_request | 2026-09-11 16:41:56,943 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+httpcore.http11.trace | 2026-09-11 16:41:56,944 | DEBUG | receive_response_body.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:41:56,947 | DEBUG | receive_response_body.complete
+httpcore.http11.trace | 2026-09-11 16:41:56,947 | DEBUG | response_closed.started
+httpcore.http11.trace | 2026-09-11 16:41:56,948 | DEBUG | response_closed.complete
+groq._base_client.request | 2026-09-11 16:41:56,949 | DEBUG | HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Fri, 11 Sep 2026 11:11:58 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'bom', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '8000', 'x-ratelimit-remaining-requests': '999', 'x-ratelimit-remaining-tokens': '6948', 'x-ratelimit-reset-requests': '1m26.4s', 'x-ratelimit-reset-tokens': '7.89s', 'x-request-id': 'req_01m282njgtewrsvkacvstz9hb3', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'set-cookie': '__cf_bm=PzUqJ1K7ksh8LJNvz_tSF87t0J_5v0WLP9gZf0spKoQ-1789125118.4563365-1.0.1.1-YBrdiDYHzM7dU_09CGJTpuFjRyDPO.NbyOKk4GiHYs8ivbNEvi.WwRL4VhA2A_ewHnSCStoMjc_wSpA7FEbgyrMjYBWYz5E.W7UgJFBmcZcFGWD5BXTt2o6rRPg3rS6f; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Fri, 11 Sep 2026 11:41:58 GMT', 'strict-transport-security': 'max-age=15552000', 'content-encoding': 'gzip', 'cf-ray': 'a3963c165c10f465-DEL', 'alt-svc': 'h3=":443"; ma=86400'})
+asyncio.__init__ | 2026-09-11 16:41:56,976 | DEBUG | Using proactor: IocpProactor
+urllib3.connectionpool._make_request | 2026-09-11 16:41:56,977 | DEBUG | https://api.smith.langchain.com:443 "GET /info HTTP/1.1" 200 None
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:41:56,979 | DEBUG | Tracing control thread func compress parallel called
+langsmith.client.tracing_control_thread_func | 2026-09-11 16:41:57,042 | DEBUG | Handling batch in langsmith mode
+urllib3.connectionpool._make_request | 2026-09-11 16:41:57,384 | DEBUG | https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34
+__main__.main | 2026-09-11 16:41:58,174 | INFO | extracted_info = RecipeSearchIntent(ingredients=['banana', 'turmeric', 'mango', 'boiled chicken', 'eggs'], dish=None, dietary_restrictions=[], cuisine=None, serving_size=None, additional_preferences=[])
+
+__main__.main | 2026-09-11 16:41:58,175 | INFO | parsed intent: {
+  "ingredients": [
+    "banana",
+    "turmeric",
+    "mango",
+    "boiled chicken",
+    "eggs"
+  ]
+}
+groq._base_client._build_request | 2026-09-11 16:41:58,189 | DEBUG | Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-da570b30-f78d-4ed6-9ffd-d9e7217fa9bf', 'json_data': {'messages': [{'role': 'system', 'content': 'U are a helpful agent please try to search for recipes for now using the tool given on;ly use it if needed'}, {'role': 'user', 'content': '{\n  "ingredients": [\n    "banana",\n    "turmeric",\n    "mango",\n    "boiled chicken",\n    "eggs"\n  ]\n}'}], 'model': 'qwen/qwen3.8-27b', 'n': 1, 'reasoning_effort': None, 'reasoning_format': None, 'service_tier': 'on_demand', 'stop': None, 'stream': False, 'temperature': 0.6, 'tools': [{'type': 'function', 'function': {'name': 'search_recipe_in_web', 'description': 'Search the web broadly for recipe pages matching the user\'s recipe intent.\n\nUse this tool when external recipe information is needed, especially when\nthe user asks to find, discover, compare, or recommend recipes from the web,\nor when the request depends on recipes that may vary by source.\n\nThis is a DISCOVERY tool. It returns candidate recipe pages, titles,\nsnippets, URLs, and relevance scores. It does NOT guarantee that the\ncomplete recipe, ingredient quantities, or cooking instructions are present\nin the search result.\n\nBuild keywords from the user\'s extracted recipe intent rather than passing\nthe entire conversation. Include the dish, important ingredients, cuisine,\ndietary requirements, and other meaningful constraints.\n\nDo NOT use this tool when the user only asks for a generic recipe that can\nbe generated reliably from existing culinary knowledge and no current,\nsource-specific, or web-based information is required.\n\nArgs:\n    max_results: Maximum number of search results to return. Default is 5.\n    topic: Type of search vertical to execute. Options are "general", "news", or "finance". Default is "general".\n    include_answer: Whether to include a short text answer or summary generated from the results. Default is False.\n    include_raw_content: Whether to return the full, raw HTML or parsed body content of the search results. Default is False.\n    include_images: Whether to include image URLs in the search output. Default is False.\n    include_image_descriptions: Whether to extract and include text descriptions or alt-text for discovered images. Default is False.\n    search_depth: The thoroughness of the search engine crawling. Options are "basic" or "advanced". Default is "basic".\n    time_range: Filters results published within a specific window. Options are "day", "week", "month", "year", or None. Default is None.\n    include_domains: A strict list of specific domain strings to restrict the search to. Default is None.\n    exclude_domains: A list of specific domain strings to completely block or filter out from results. Default is None.\n\n\nReturns:\n    A dictionary containing the generated search query and normalized\n    candidate recipe results. Each result contains the title, URL, snippet,\n    and Tavily relevance score.', 'parameters': {'properties': {'search_query': {'type': 'string'}, 'max_results': {'default': 5, 'type': 'integer'}, 'topic': {'default': 'general', 'enum': ['general', 'news', 'finance'], 'type': 'string'}, 'include_answer': {'default': False, 'type': 'boolean'}, 'include_raw_content': {'default': False, 'type': 'boolean'}, 'include_images': {'default': False, 'type': 'boolean'}, 'include_image_descriptions': {'default': False, 'type': 'boolean'}, 'search_depth': {'default': 'basic', 'enum': ['basic', 'advanced'], 'type': 'string'}, 'time_range': {'default': None, 'enum': ['day', 'week', 'month', 'year'], 'type': 'string'}, 'include_domains': {'default': None, 'items': {'type': 'string'}, 'type': 'array'}, 'exclude_domains': {'default': None, 'items': {'type': 'string'}, 'type': 'array'}}, 'required': ['search_query'], 'type': 'object'}}}]}}
+groq._base_client.request | 2026-09-11 16:41:58,191 | DEBUG | Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+httpcore.connection.trace | 2026-09-11 16:41:58,193 | DEBUG | connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=None socket_options=None
+httpcore.connection.trace | 2026-09-11 16:41:58,203 | DEBUG | connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000002147EB8BB10>
+httpcore.connection.trace | 2026-09-11 16:41:58,204 | DEBUG | start_tls.started ssl_context=<ssl.SSLContext object at 0x000002147E4AE990> server_hostname='api.groq.com' timeout=None
+httpcore.connection.trace | 2026-09-11 16:41:58,221 | DEBUG | start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000002147EE0D220>
+httpcore.http11.trace | 2026-09-11 16:41:58,221 | DEBUG | send_request_headers.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:41:58,222 | DEBUG | send_request_headers.complete
+httpcore.http11.trace | 2026-09-11 16:41:58,224 | DEBUG | send_request_body.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:41:58,225 | DEBUG | send_request_body.complete
+httpcore.http11.trace | 2026-09-11 16:41:58,227 | DEBUG | receive_response_headers.started request=<Request [b'POST']>
+langsmith.client._send_compressed_multipart_req | 2026-09-11 16:41:58,698 | DEBUG | Sending compressed multipart request with context: trace=01a0902a-c8e1-72a3-bf31-cef87961df08,id=01a0902a-c8e1-72a3-bf31-cef87961df08; trace=01a0902a-c8e1-72a3-bf31-cef87961df08,id=01a0902a-c8e5-7cd3-a4e6-ddbd482957b0; trace=01a0902a-c8e1-72a3-bf31-cef87961df08,id=01a0902a-c8eb-7e20-a6b9-3480f3f88473
+httpcore.http11.trace | 2026-09-11 16:41:58,887 | DEBUG | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 11 Sep 2026 11:12:00 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'bom'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'8000'), (b'x-ratelimit-remaining-requests', b'998'), (b'x-ratelimit-remaining-tokens', b'6049'), (b'x-ratelimit-reset-requests', b'2m52.8s'), (b'x-ratelimit-reset-tokens', b'31.74s'), (b'x-request-id', b'req_01m282nm8me4ys0mwpsz2xvypz'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'set-cookie', b'__cf_bm=rcKDL04x4CSWBijvvUxrDrlotEI.9nY0H1tzQdb3I7M-1789125120.2410975-1.0.1.1-7XzQwkXsqxSXW11053rUA.Kn6uQrvE2UHBsTvWrSJ.4mBpj7dhijuc6tfhLUJFAvvsTb4o0euNPkuTaAXWiJuWcH8KUtCE5D5oMXBDzbxr6VoKIx8GGfbTrRZGjWUbUK; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Fri, 11 Sep 2026 11:42:00 GMT'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a3963c218c7dc27b-DEL'), (b'alt-svc', b'h3=":443"; ma=86400')])
+httpx._send_single_request | 2026-09-11 16:41:58,889 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+httpcore.http11.trace | 2026-09-11 16:41:58,890 | DEBUG | receive_response_body.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:41:58,893 | DEBUG | receive_response_body.complete
+httpcore.http11.trace | 2026-09-11 16:41:58,893 | DEBUG | response_closed.started
+httpcore.http11.trace | 2026-09-11 16:41:58,894 | DEBUG | response_closed.complete
+groq._base_client.request | 2026-09-11 16:41:58,895 | DEBUG | HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Fri, 11 Sep 2026 11:12:00 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'bom', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '8000', 'x-ratelimit-remaining-requests': '998', 'x-ratelimit-remaining-tokens': '6049', 'x-ratelimit-reset-requests': '2m52.8s', 'x-ratelimit-reset-tokens': '31.74s', 'x-request-id': 'req_01m282nm8me4ys0mwpsz2xvypz', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'set-cookie': '__cf_bm=rcKDL04x4CSWBijvvUxrDrlotEI.9nY0H1tzQdb3I7M-1789125120.2410975-1.0.1.1-7XzQwkXsqxSXW11053rUA.Kn6uQrvE2UHBsTvWrSJ.4mBpj7dhijuc6tfhLUJFAvvsTb4o0euNPkuTaAXWiJuWcH8KUtCE5D5oMXBDzbxr6VoKIx8GGfbTrRZGjWUbUK; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Fri, 11 Sep 2026 11:42:00 GMT', 'strict-transport-security': 'max-age=15552000', 'content-encoding': 'gzip', 'cf-ray': 'a3963c218c7dc27b-DEL', 'alt-svc': 'h3=":443"; ma=86400'})
+urllib3.connectionpool._make_request | 2026-09-11 16:41:59,016 | DEBUG | https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34
+__main__.main | 2026-09-11 16:41:59,038 | ERROR | Application failed during execution: StructuredTool does not support sync invocation.
+Traceback (most recent call last):
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\main.py", line 49, in main
+    response = agent.invoke(
+        history
+    )
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\pregel\main.py", line 3913, in invoke
+    for chunk in self.stream(
+                 ~~~~~~~~~~~^
+        input,
+        ^^^^^^
+    ...<11 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ):
+    ^
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\pregel\main.py", line 2967, in stream
+    for _ in runner.tick(
+             ~~~~~~~~~~~^
+        [t for t in loop.tasks.values() if not t.writes],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        schedule_task=loop.accept_push,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\pregel\_runner.py", line 207, in tick
+    run_with_retry(
+    ~~~~~~~~~~~~~~^
+        t,
+        ^^
+    ...<10 lines>...
+        },
+        ^^
+    )
+    ^
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\pregel\_retry.py", line 617, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 707, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 447, in invoke
+    ret = self.func(*args, **kwargs)
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\prebuilt\tool_node.py", line 822, in _func
+    outputs = list(
+        executor.map(self._run_one, tool_calls, input_types, tool_runtimes)
+    )
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 625, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 318, in _result_or_cancel
+    return fut.result(timeout)
+           ~~~~~~~~~~^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 460, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 402, in __get_result
+    raise self._exception
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langchain_core\runnables\config.py", line 650, in _wrapped_fn
+    return contexts.pop().run(fn, *args)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\prebuilt\tool_node.py", line 1046, in _run_one
+    return self._execute_tool_sync(tool_request, input_type, config)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\prebuilt\tool_node.py", line 1006, in _execute_tool_sync
+    content = _handle_tool_error(e, flag=self._handle_tool_errors)
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\prebuilt\tool_node.py", line 434, in _handle_tool_error
+    content = flag(e)  # type: ignore [assignment, call-arg]
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\prebuilt\tool_node.py", line 391, in _default_handle_tool_errors
+    raise e
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\prebuilt\tool_node.py", line 958, in _execute_tool_sync
+    response = tool.invoke(call_args, config)
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langchain_core\tools\base.py", line 766, in invoke
+    return self.run(tool_input, **kwargs)
+           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langchain_core\tools\base.py", line 1134, in run
+    raise error_to_raise
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langchain_core\tools\base.py", line 1100, in run
+    response = context.run(self._run, *tool_args, **tool_kwargs)
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langchain_core\tools\structured.py", line 99, in _run
+    raise NotImplementedError(msg)
+NotImplementedError: StructuredTool does not support sync invocation.
+During task with name 'tools' and id 'f204426a-8415-45c7-a2cb-0cc7847e8f69'
+langsmith.client.keep_thread_active | 2026-09-11 16:41:59,089 | DEBUG | Main thread is dead, stopping compression thread
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:41:59,090 | DEBUG | Compression thread final flush: trace_count=7
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:41:59,092 | DEBUG | Compression thread final flush: sending 5197 bytes
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:41:59,094 | DEBUG | Compression thread final flush: thread pool shutdown, sending synchronously
+langsmith.client._send_compressed_multipart_req | 2026-09-11 16:41:59,094 | DEBUG | Sending compressed multipart request with context: trace=01a0902a-c8e1-72a3-bf31-cef87961df08,id=01a0902a-c8eb-7e20-a6b9-3480f3f88473; trace=01a0902a-c8e1-72a3-bf31-cef87961df08,id=01a0902a-c8e5-7cd3-a4e6-ddbd482957b0; trace=01a0902a-c8e1-72a3-bf31-cef87961df08,id=01a0902a-cbb3-71b3-b6b5-cbe9ce9afe67; trace=01a0902a-c8e1-72a3-bf31-cef87961df08,id=01a0902a-cbb7-73e0-bc8d-6af0e0439955; trace=01a0902a-c8e1-72a3-bf31-cef87961df08,id=01a0902a-cbb7-73e0-bc8d-6af0e0439955; trace=01a0902a-c8e1-72a3-bf31-cef87961df08,id=01a0902a-cbb3-71b3-b6b5-cbe9ce9afe67; trace=01a0902a-c8e1-72a3-bf31-cef87961df08,id=01a0902a-c8e1-72a3-bf31-cef87961df08
+langsmith.client.keep_thread_active | 2026-09-11 16:41:59,167 | DEBUG | Main thread is dead, stopping tracing thread
+langsmith.client.tracing_control_thread_func | 2026-09-11 16:41:59,168 | DEBUG | Tracing thread draining queue on exit: qsize=0
+langsmith.client.tracing_control_thread_func | 2026-09-11 16:41:59,170 | DEBUG | Tracing control thread is shutting down
+urllib3.connectionpool._make_request | 2026-09-11 16:41:59,420 | DEBUG | https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:41:59,421 | DEBUG | Compression thread final flush: sync send completed
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:41:59,422 | DEBUG | Compressed traces control thread is shutting down
+langsmith.client.close_session | 2026-09-11 16:41:59,423 | DEBUG | Closing Client.session
+langsmith.client.close_session | 2026-09-11 16:41:59,427 | DEBUG | Closing Client.session
+httpcore.connection.trace | 2026-09-11 16:41:59,494 | DEBUG | close.started
+httpcore.connection.trace | 2026-09-11 16:41:59,495 | DEBUG | close.complete
+httpcore.connection.trace | 2026-09-11 16:41:59,496 | DEBUG | close.started
+httpcore.connection.trace | 2026-09-11 16:41:59,499 | DEBUG | close.complete
+__main__.main | 2026-09-11 16:45:59,055 | INFO | Starting recipe extraction application
+google_genai._api_client.get_env_api_key | 2026-09-11 16:46:09,198 | WARNING | Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+urllib3.connectionpool._new_conn | 2026-09-11 16:46:10,925 | DEBUG | Starting new HTTPS connection (1): api.smith.langchain.com:443
+groq._base_client._build_request | 2026-09-11 16:46:11,304 | DEBUG | Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-e646fefc-ba3d-41a7-94b6-4a0ebc9dcb0d', 'json_data': {'messages': [{'role': 'system', 'content': "\nYou are a recipe-query understanding system. Extract structured recipe search information from the user's request. \nRules: \n- Extract only information explicitly stated or strongly implied. \n- Do not invent ingredients. \n- If the user asks for a specific dish, put it in dish. \n- If the user lists ingredients, put them in ingredients. \n- Separate dietary preferences from hard restrictions. \n- If something is unknown, leave it null or empty. \n- Preserve important cooking preferences.\n"}, {'role': 'user', 'content': 'I have bannana. turmeric, mango. boiled chiken, eggs'}], 'model': 'qwen/qwen3.8-27b', 'n': 1, 'reasoning_effort': None, 'reasoning_format': None, 'service_tier': 'on_demand', 'stop': None, 'stream': False, 'temperature': 0.6, 'tool_choice': {'type': 'function', 'function': {'name': 'RecipeSearchIntent'}}, 'tools': [{'type': 'function', 'function': {'name': 'RecipeSearchIntent', 'description': '', 'parameters': {'properties': {'ingredients': {'description': 'Ingredients the user has or wants to use.', 'items': {'type': 'string'}, 'type': 'array'}, 'dish': {'anyOf': [{'type': 'string'}, {'type': 'null'}], 'default': None, 'description': 'Specific dish the user wants to prepare, if any.'}, 'dietary_restrictions': {'description': 'Dietary preferences such as high-protein or low-carb.', 'items': {'type': 'string'}, 'type': 'array'}, 'cuisine': {'anyOf': [{'type': 'string'}, {'type': 'null'}], 'default': None, 'description': 'Cuisine preference, e.g., Italian, Mexican, etc.'}, 'serving_size': {'anyOf': [{'type': 'integer'}, {'type': 'null'}], 'default': None, 'description': 'Number of servings the user wants to prepare.'}, 'additional_preferences': {'description': 'Any other cooking preferences or constraints, such as quick, easy, spicy, etc', 'items': {'type': 'string'}, 'type': 'array'}}, 'type': 'object'}}}]}}
+groq._base_client.request | 2026-09-11 16:46:11,307 | DEBUG | Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+httpcore.connection.trace | 2026-09-11 16:46:11,307 | DEBUG | connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=None socket_options=None
+httpcore.connection.trace | 2026-09-11 16:46:11,317 | DEBUG | connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x00000271A57142F0>
+httpcore.connection.trace | 2026-09-11 16:46:11,318 | DEBUG | start_tls.started ssl_context=<ssl.SSLContext object at 0x000002719E8E7C50> server_hostname='api.groq.com' timeout=None
+httpcore.connection.trace | 2026-09-11 16:46:11,337 | DEBUG | start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x00000271A5689A90>
+httpcore.http11.trace | 2026-09-11 16:46:11,338 | DEBUG | send_request_headers.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:46:11,340 | DEBUG | send_request_headers.complete
+httpcore.http11.trace | 2026-09-11 16:46:11,342 | DEBUG | send_request_body.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:46:11,343 | DEBUG | send_request_body.complete
+httpcore.http11.trace | 2026-09-11 16:46:11,343 | DEBUG | receive_response_headers.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:46:11,750 | DEBUG | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 11 Sep 2026 11:16:13 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'bom'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'8000'), (b'x-ratelimit-remaining-requests', b'999'), (b'x-ratelimit-remaining-tokens', b'7354'), (b'x-ratelimit-reset-requests', b'1m26.4s'), (b'x-ratelimit-reset-tokens', b'4.845s'), (b'x-request-id', b'req_01m282xbepevwa57fh9zdwz4b9'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'set-cookie', b'__cf_bm=J0x3A1DTcWBi4bIluBLU31Pk5kKa64Sj.ExiwBC6ZEE-1789125373.3616579-1.0.1.1-26MVZW42Ho6Oi3UcaaxhM9P9kAP.LJ5wGneZPypNC40kOPoacTU0W23sC3NZPTriIwpeW_.FYMH4TXtrPnGu.Jac41pJQ5.2z8MGM0D9jLENpe9uQJGjqsRrWyhrnuLf; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Fri, 11 Sep 2026 11:46:13 GMT'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a396424f88d591e0-DEL'), (b'alt-svc', b'h3=":443"; ma=86400')])
+httpx._send_single_request | 2026-09-11 16:46:11,752 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+httpcore.http11.trace | 2026-09-11 16:46:11,753 | DEBUG | receive_response_body.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:46:11,756 | DEBUG | receive_response_body.complete
+httpcore.http11.trace | 2026-09-11 16:46:11,757 | DEBUG | response_closed.started
+httpcore.http11.trace | 2026-09-11 16:46:11,757 | DEBUG | response_closed.complete
+groq._base_client.request | 2026-09-11 16:46:11,758 | DEBUG | HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Fri, 11 Sep 2026 11:16:13 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'bom', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '8000', 'x-ratelimit-remaining-requests': '999', 'x-ratelimit-remaining-tokens': '7354', 'x-ratelimit-reset-requests': '1m26.4s', 'x-ratelimit-reset-tokens': '4.845s', 'x-request-id': 'req_01m282xbepevwa57fh9zdwz4b9', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'set-cookie': '__cf_bm=J0x3A1DTcWBi4bIluBLU31Pk5kKa64Sj.ExiwBC6ZEE-1789125373.3616579-1.0.1.1-26MVZW42Ho6Oi3UcaaxhM9P9kAP.LJ5wGneZPypNC40kOPoacTU0W23sC3NZPTriIwpeW_.FYMH4TXtrPnGu.Jac41pJQ5.2z8MGM0D9jLENpe9uQJGjqsRrWyhrnuLf; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Fri, 11 Sep 2026 11:46:13 GMT', 'strict-transport-security': 'max-age=15552000', 'content-encoding': 'gzip', 'cf-ray': 'a396424f88d591e0-DEL', 'alt-svc': 'h3=":443"; ma=86400'})
+asyncio.__init__ | 2026-09-11 16:46:11,783 | DEBUG | Using proactor: IocpProactor
+urllib3.connectionpool._make_request | 2026-09-11 16:46:11,897 | DEBUG | https://api.smith.langchain.com:443 "GET /info HTTP/1.1" 200 None
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:46:11,899 | DEBUG | Tracing control thread func compress parallel called
+langsmith.client.tracing_control_thread_func | 2026-09-11 16:46:11,958 | DEBUG | Handling batch in langsmith mode
+urllib3.connectionpool._make_request | 2026-09-11 16:46:12,336 | DEBUG | https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34
+__main__.main | 2026-09-11 16:46:12,954 | INFO | extracted_info = RecipeSearchIntent(ingredients=['banana', 'turmeric', 'mango', 'boiled chicken', 'eggs'], dish=None, dietary_restrictions=[], cuisine=None, serving_size=None, additional_preferences=[])
+
+__main__.main | 2026-09-11 16:46:12,955 | INFO | parsed intent: {
+  "ingredients": [
+    "banana",
+    "turmeric",
+    "mango",
+    "boiled chicken",
+    "eggs"
+  ]
+}
+groq._base_client._build_request | 2026-09-11 16:46:12,969 | DEBUG | Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-529623e8-98bb-44d3-8bfb-0478fdb95d5a', 'json_data': {'messages': [{'role': 'system', 'content': 'U are a helpful agent please try to search for recipes for now using the tool given on;ly use it if needed'}, {'role': 'user', 'content': '{\n  "ingredients": [\n    "banana",\n    "turmeric",\n    "mango",\n    "boiled chicken",\n    "eggs"\n  ]\n}'}], 'model': 'qwen/qwen3.8-27b', 'n': 1, 'reasoning_effort': None, 'reasoning_format': None, 'service_tier': 'on_demand', 'stop': None, 'stream': False, 'temperature': 0.6, 'tools': [{'type': 'function', 'function': {'name': 'search_recipe_in_web', 'description': 'Search the web broadly for recipe pages matching the user\'s recipe intent.\n\nUse this tool when external recipe information is needed, especially when\nthe user asks to find, discover, compare, or recommend recipes from the web,\nor when the request depends on recipes that may vary by source.\n\nThis is a DISCOVERY tool. It returns candidate recipe pages, titles,\nsnippets, URLs, and relevance scores. It does NOT guarantee that the\ncomplete recipe, ingredient quantities, or cooking instructions are present\nin the search result.\n\nBuild keywords from the user\'s extracted recipe intent rather than passing\nthe entire conversation. Include the dish, important ingredients, cuisine,\ndietary requirements, and other meaningful constraints.\n\nDo NOT use this tool when the user only asks for a generic recipe that can\nbe generated reliably from existing culinary knowledge and no current,\nsource-specific, or web-based information is required.\n\nArgs:\n    max_results: Maximum number of search results to return. Default is 5.\n    topic: Type of search vertical to execute. Options are "general", "news", or "finance". Default is "general".\n    include_answer: Whether to include a short text answer or summary generated from the results. Default is False.\n    include_raw_content: Whether to return the full, raw HTML or parsed body content of the search results. Default is False.\n    include_images: Whether to include image URLs in the search output. Default is False.\n    include_image_descriptions: Whether to extract and include text descriptions or alt-text for discovered images. Default is False.\n    search_depth: The thoroughness of the search engine crawling. Options are "basic" or "advanced". Default is "basic".\n    time_range: Filters results published within a specific window. Options are "day", "week", "month", "year", or None. Default is None.\n    include_domains: A strict list of specific domain strings to restrict the search to. Default is None.\n    exclude_domains: A list of specific domain strings to completely block or filter out from results. Default is None.\n\n\nReturns:\n    A dictionary containing the generated search query and normalized\n    candidate recipe results. Each result contains the title, URL, snippet,\n    and Tavily relevance score.', 'parameters': {'properties': {'search_query': {'type': 'string'}, 'max_results': {'default': 5, 'type': 'integer'}, 'topic': {'default': 'general', 'enum': ['general', 'news', 'finance'], 'type': 'string'}, 'include_answer': {'default': False, 'type': 'boolean'}, 'include_raw_content': {'default': False, 'type': 'boolean'}, 'include_images': {'default': False, 'type': 'boolean'}, 'include_image_descriptions': {'default': False, 'type': 'boolean'}, 'search_depth': {'default': 'basic', 'enum': ['basic', 'advanced'], 'type': 'string'}, 'time_range': {'default': None, 'enum': ['day', 'week', 'month', 'year'], 'type': 'string'}, 'include_domains': {'default': None, 'items': {'type': 'string'}, 'type': 'array'}, 'exclude_domains': {'default': None, 'items': {'type': 'string'}, 'type': 'array'}}, 'required': ['search_query'], 'type': 'object'}}}]}}
+groq._base_client.request | 2026-09-11 16:46:12,972 | DEBUG | Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+httpcore.connection.trace | 2026-09-11 16:46:12,973 | DEBUG | connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=None socket_options=None
+httpcore.connection.trace | 2026-09-11 16:46:12,983 | DEBUG | connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x00000271A568BC50>
+httpcore.connection.trace | 2026-09-11 16:46:12,984 | DEBUG | start_tls.started ssl_context=<ssl.SSLContext object at 0x000002719EDAAA30> server_hostname='api.groq.com' timeout=None
+httpcore.connection.trace | 2026-09-11 16:46:13,000 | DEBUG | start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x00000271A570D220>
+httpcore.http11.trace | 2026-09-11 16:46:13,001 | DEBUG | send_request_headers.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:46:13,002 | DEBUG | send_request_headers.complete
+httpcore.http11.trace | 2026-09-11 16:46:13,004 | DEBUG | send_request_body.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:46:13,005 | DEBUG | send_request_body.complete
+httpcore.http11.trace | 2026-09-11 16:46:13,006 | DEBUG | receive_response_headers.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:46:13,530 | DEBUG | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 11 Sep 2026 11:16:15 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'bom'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'8000'), (b'x-ratelimit-remaining-requests', b'998'), (b'x-ratelimit-remaining-tokens', b'6497'), (b'x-ratelimit-reset-requests', b'2m52.8s'), (b'x-ratelimit-reset-tokens', b'12.308s'), (b'x-request-id', b'req_01m282xd2jeg8r6ppakehnmcsx'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'set-cookie', b'__cf_bm=atH1BOf7hEL4Dk59AIa23Pl9UJnyjSNprZgo1LSLoc8-1789125375.0218906-1.0.1.1-lxAnvSSpVjVkQGo58pSh8Ynz3_4uvulJ2Em6.o0qpr8LmwRnujHebHWGV6PExwmbjWcZxECQsPFO_TkyKCppNyvIlGjGWkdYykxdyMWf14gOKTtNWoo4hIAKYxvPZPqE; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Fri, 11 Sep 2026 11:46:15 GMT'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a3964259eaf9aa20-DEL'), (b'alt-svc', b'h3=":443"; ma=86400')])
+httpx._send_single_request | 2026-09-11 16:46:13,531 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+httpcore.http11.trace | 2026-09-11 16:46:13,533 | DEBUG | receive_response_body.started request=<Request [b'POST']>
+langsmith.client._send_compressed_multipart_req | 2026-09-11 16:46:13,535 | DEBUG | Sending compressed multipart request with context: trace=01a0902e-ac1f-7b00-9c87-049b9b10752e,id=01a0902e-ac1f-7b00-9c87-049b9b10752e; trace=01a0902e-ac1f-7b00-9c87-049b9b10752e,id=01a0902e-ac22-7bd2-b633-f63785eee79b; trace=01a0902e-ac1f-7b00-9c87-049b9b10752e,id=01a0902e-ac27-7181-963c-db8d7740504e
+httpcore.http11.trace | 2026-09-11 16:46:13,536 | DEBUG | receive_response_body.complete
+httpcore.http11.trace | 2026-09-11 16:46:13,537 | DEBUG | response_closed.started
+httpcore.http11.trace | 2026-09-11 16:46:13,537 | DEBUG | response_closed.complete
+groq._base_client.request | 2026-09-11 16:46:13,539 | DEBUG | HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Fri, 11 Sep 2026 11:16:15 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'bom', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '8000', 'x-ratelimit-remaining-requests': '998', 'x-ratelimit-remaining-tokens': '6497', 'x-ratelimit-reset-requests': '2m52.8s', 'x-ratelimit-reset-tokens': '12.308s', 'x-request-id': 'req_01m282xd2jeg8r6ppakehnmcsx', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'set-cookie': '__cf_bm=atH1BOf7hEL4Dk59AIa23Pl9UJnyjSNprZgo1LSLoc8-1789125375.0218906-1.0.1.1-lxAnvSSpVjVkQGo58pSh8Ynz3_4uvulJ2Em6.o0qpr8LmwRnujHebHWGV6PExwmbjWcZxECQsPFO_TkyKCppNyvIlGjGWkdYykxdyMWf14gOKTtNWoo4hIAKYxvPZPqE; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Fri, 11 Sep 2026 11:46:15 GMT', 'strict-transport-security': 'max-age=15552000', 'content-encoding': 'gzip', 'cf-ray': 'a3964259eaf9aa20-DEL', 'alt-svc': 'h3=":443"; ma=86400'})
+__main__.main | 2026-09-11 16:46:13,623 | ERROR | Application failed during execution: 'TavilySearch' object has no attribute 'search'
+Traceback (most recent call last):
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\main.py", line 49, in main
+    response = agent.invoke(
+        history
+    )
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\pregel\main.py", line 3913, in invoke
+    for chunk in self.stream(
+                 ~~~~~~~~~~~^
+        input,
+        ^^^^^^
+    ...<11 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ):
+    ^
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\pregel\main.py", line 2967, in stream
+    for _ in runner.tick(
+             ~~~~~~~~~~~^
+        [t for t in loop.tasks.values() if not t.writes],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        schedule_task=loop.accept_push,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\pregel\_runner.py", line 207, in tick
+    run_with_retry(
+    ~~~~~~~~~~~~~~^
+        t,
+        ^^
+    ...<10 lines>...
+        },
+        ^^
+    )
+    ^
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\pregel\_retry.py", line 617, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 707, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 447, in invoke
+    ret = self.func(*args, **kwargs)
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\prebuilt\tool_node.py", line 822, in _func
+    outputs = list(
+        executor.map(self._run_one, tool_calls, input_types, tool_runtimes)
+    )
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 625, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 318, in _result_or_cancel
+    return fut.result(timeout)
+           ~~~~~~~~~~^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 460, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 402, in __get_result
+    raise self._exception
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langchain_core\runnables\config.py", line 650, in _wrapped_fn
+    return contexts.pop().run(fn, *args)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\prebuilt\tool_node.py", line 1046, in _run_one
+    return self._execute_tool_sync(tool_request, input_type, config)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\prebuilt\tool_node.py", line 1006, in _execute_tool_sync
+    content = _handle_tool_error(e, flag=self._handle_tool_errors)
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\prebuilt\tool_node.py", line 434, in _handle_tool_error
+    content = flag(e)  # type: ignore [assignment, call-arg]
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\prebuilt\tool_node.py", line 391, in _default_handle_tool_errors
+    raise e
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langgraph\prebuilt\tool_node.py", line 958, in _execute_tool_sync
+    response = tool.invoke(call_args, config)
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langchain_core\tools\base.py", line 766, in invoke
+    return self.run(tool_input, **kwargs)
+           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langchain_core\tools\base.py", line 1134, in run
+    raise error_to_raise
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langchain_core\tools\base.py", line 1100, in run
+    response = context.run(self._run, *tool_args, **tool_kwargs)
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\langchain_core\tools\structured.py", line 97, in _run
+    return self.func(*args, **kwargs)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\tools.py", line 80, in search_recipe_in_web
+    results = TAVILY.search(
+              ^^^^^^^^^^^^^
+  File "D:\GRIT\Foundation Introduction to LangChain _ Python\Personal Chef\.venv\Lib\site-packages\pydantic\main.py", line 1042, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'TavilySearch' object has no attribute 'search'
+During task with name 'tools' and id '3fdfa5fe-49ce-1196-f57c-75fb8c4ba3c7'
+urllib3.connectionpool._make_request | 2026-09-11 16:46:13,859 | DEBUG | https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34
+langsmith.client.keep_thread_active | 2026-09-11 16:46:13,921 | DEBUG | Main thread is dead, stopping compression thread
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:46:13,922 | DEBUG | Compression thread final flush: trace_count=7
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:46:13,926 | DEBUG | Compression thread final flush: sending 5375 bytes
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:46:13,927 | DEBUG | Compression thread final flush: thread pool shutdown, sending synchronously
+langsmith.client._send_compressed_multipart_req | 2026-09-11 16:46:13,928 | DEBUG | Sending compressed multipart request with context: trace=01a0902e-ac1f-7b00-9c87-049b9b10752e,id=01a0902e-ac27-7181-963c-db8d7740504e; trace=01a0902e-ac1f-7b00-9c87-049b9b10752e,id=01a0902e-ac22-7bd2-b633-f63785eee79b; trace=01a0902e-ac1f-7b00-9c87-049b9b10752e,id=01a0902e-ae68-7832-94cc-3c9f13c6a569; trace=01a0902e-ac1f-7b00-9c87-049b9b10752e,id=01a0902e-ae69-7301-bbdb-a3371e61fd67; trace=01a0902e-ac1f-7b00-9c87-049b9b10752e,id=01a0902e-ae69-7301-bbdb-a3371e61fd67; trace=01a0902e-ac1f-7b00-9c87-049b9b10752e,id=01a0902e-ae68-7832-94cc-3c9f13c6a569; trace=01a0902e-ac1f-7b00-9c87-049b9b10752e,id=01a0902e-ac1f-7b00-9c87-049b9b10752e
+langsmith.client.keep_thread_active | 2026-09-11 16:46:14,125 | DEBUG | Main thread is dead, stopping tracing thread
+langsmith.client.tracing_control_thread_func | 2026-09-11 16:46:14,126 | DEBUG | Tracing thread draining queue on exit: qsize=0
+langsmith.client.tracing_control_thread_func | 2026-09-11 16:46:14,127 | DEBUG | Tracing control thread is shutting down
+urllib3.connectionpool._make_request | 2026-09-11 16:46:14,253 | DEBUG | https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:46:14,254 | DEBUG | Compression thread final flush: sync send completed
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:46:14,255 | DEBUG | Compressed traces control thread is shutting down
+langsmith.client.close_session | 2026-09-11 16:46:14,256 | DEBUG | Closing Client.session
+langsmith.client.close_session | 2026-09-11 16:46:14,260 | DEBUG | Closing Client.session
+httpcore.connection.trace | 2026-09-11 16:46:14,328 | DEBUG | close.started
+httpcore.connection.trace | 2026-09-11 16:46:14,330 | DEBUG | close.complete
+httpcore.connection.trace | 2026-09-11 16:46:14,331 | DEBUG | close.started
+httpcore.connection.trace | 2026-09-11 16:46:14,333 | DEBUG | close.complete
+__main__.main | 2026-09-11 16:48:22,719 | INFO | Starting recipe extraction application
+google_genai._api_client.get_env_api_key | 2026-09-11 16:48:29,379 | WARNING | Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+urllib3.connectionpool._new_conn | 2026-09-11 16:48:31,236 | DEBUG | Starting new HTTPS connection (1): api.smith.langchain.com:443
+groq._base_client._build_request | 2026-09-11 16:48:31,585 | DEBUG | Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-0e3f92a5-9ed2-4ebd-b7ba-920893074843', 'json_data': {'messages': [{'role': 'system', 'content': "\nYou are a recipe-query understanding system. Extract structured recipe search information from the user's request. \nRules: \n- Extract only information explicitly stated or strongly implied. \n- Do not invent ingredients. \n- If the user asks for a specific dish, put it in dish. \n- If the user lists ingredients, put them in ingredients. \n- Separate dietary preferences from hard restrictions. \n- If something is unknown, leave it null or empty. \n- Preserve important cooking preferences.\n"}, {'role': 'user', 'content': 'I have bannana. turmeric, mango. boiled chiken, eggs'}], 'model': 'qwen/qwen3.8-27b', 'n': 1, 'reasoning_effort': None, 'reasoning_format': None, 'service_tier': 'on_demand', 'stop': None, 'stream': False, 'temperature': 0.6, 'tool_choice': {'type': 'function', 'function': {'name': 'RecipeSearchIntent'}}, 'tools': [{'type': 'function', 'function': {'name': 'RecipeSearchIntent', 'description': '', 'parameters': {'properties': {'ingredients': {'description': 'Ingredients the user has or wants to use.', 'items': {'type': 'string'}, 'type': 'array'}, 'dish': {'anyOf': [{'type': 'string'}, {'type': 'null'}], 'default': None, 'description': 'Specific dish the user wants to prepare, if any.'}, 'dietary_restrictions': {'description': 'Dietary preferences such as high-protein or low-carb.', 'items': {'type': 'string'}, 'type': 'array'}, 'cuisine': {'anyOf': [{'type': 'string'}, {'type': 'null'}], 'default': None, 'description': 'Cuisine preference, e.g., Italian, Mexican, etc.'}, 'serving_size': {'anyOf': [{'type': 'integer'}, {'type': 'null'}], 'default': None, 'description': 'Number of servings the user wants to prepare.'}, 'additional_preferences': {'description': 'Any other cooking preferences or constraints, such as quick, easy, spicy, etc', 'items': {'type': 'string'}, 'type': 'array'}}, 'type': 'object'}}}]}}
+groq._base_client.request | 2026-09-11 16:48:31,588 | DEBUG | Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+httpcore.connection.trace | 2026-09-11 16:48:31,588 | DEBUG | connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=None socket_options=None
+httpcore.connection.trace | 2026-09-11 16:48:31,670 | DEBUG | connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x00000178B4710440>
+httpcore.connection.trace | 2026-09-11 16:48:31,670 | DEBUG | start_tls.started ssl_context=<ssl.SSLContext object at 0x00000178AD8E7C50> server_hostname='api.groq.com' timeout=None
+httpcore.connection.trace | 2026-09-11 16:48:31,689 | DEBUG | start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x00000178B4689950>
+httpcore.http11.trace | 2026-09-11 16:48:31,689 | DEBUG | send_request_headers.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:48:31,692 | DEBUG | send_request_headers.complete
+httpcore.http11.trace | 2026-09-11 16:48:31,692 | DEBUG | send_request_body.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:48:31,695 | DEBUG | send_request_body.complete
+httpcore.http11.trace | 2026-09-11 16:48:31,695 | DEBUG | receive_response_headers.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:48:32,098 | DEBUG | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 11 Sep 2026 11:18:34 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'bom'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'8000'), (b'x-ratelimit-remaining-requests', b'998'), (b'x-ratelimit-remaining-tokens', b'7354'), (b'x-ratelimit-reset-requests', b'2m52.8s'), (b'x-ratelimit-reset-tokens', b'4.845s'), (b'x-request-id', b'req_01m2831mgmev294mhqbdkzgghk'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'set-cookie', b'__cf_bm=Ep3IhG_cid3fUOGG03uirLBGFOC4q5QslRMFL.6lTDI-1789125513.7133613-1.0.1.1-obLWTHlS1ck4zBJ8_vADIzEC0eHeBLcSPLAUxmYWq6UR9q6h7VZMxya4yXW8FXXwwq0TIrPJnBW7hkeL.aobO5PgLEnBGnMzbWgMNgDe6QfBJ8_aRuRQ6aneo5XQABSe; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Fri, 11 Sep 2026 11:48:34 GMT'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a39645bcbb1a7599-DEL'), (b'alt-svc', b'h3=":443"; ma=86400')])
+httpx._send_single_request | 2026-09-11 16:48:32,100 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+httpcore.http11.trace | 2026-09-11 16:48:32,102 | DEBUG | receive_response_body.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:48:32,103 | DEBUG | receive_response_body.complete
+httpcore.http11.trace | 2026-09-11 16:48:32,104 | DEBUG | response_closed.started
+httpcore.http11.trace | 2026-09-11 16:48:32,104 | DEBUG | response_closed.complete
+groq._base_client.request | 2026-09-11 16:48:32,105 | DEBUG | HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Fri, 11 Sep 2026 11:18:34 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'bom', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '8000', 'x-ratelimit-remaining-requests': '998', 'x-ratelimit-remaining-tokens': '7354', 'x-ratelimit-reset-requests': '2m52.8s', 'x-ratelimit-reset-tokens': '4.845s', 'x-request-id': 'req_01m2831mgmev294mhqbdkzgghk', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'set-cookie': '__cf_bm=Ep3IhG_cid3fUOGG03uirLBGFOC4q5QslRMFL.6lTDI-1789125513.7133613-1.0.1.1-obLWTHlS1ck4zBJ8_vADIzEC0eHeBLcSPLAUxmYWq6UR9q6h7VZMxya4yXW8FXXwwq0TIrPJnBW7hkeL.aobO5PgLEnBGnMzbWgMNgDe6QfBJ8_aRuRQ6aneo5XQABSe; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Fri, 11 Sep 2026 11:48:34 GMT', 'strict-transport-security': 'max-age=15552000', 'content-encoding': 'gzip', 'cf-ray': 'a39645bcbb1a7599-DEL', 'alt-svc': 'h3=":443"; ma=86400'})
+asyncio.__init__ | 2026-09-11 16:48:32,130 | DEBUG | Using proactor: IocpProactor
+urllib3.connectionpool._make_request | 2026-09-11 16:48:32,187 | DEBUG | https://api.smith.langchain.com:443 "GET /info HTTP/1.1" 200 None
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:48:32,189 | DEBUG | Tracing control thread func compress parallel called
+langsmith.client.tracing_control_thread_func | 2026-09-11 16:48:32,243 | DEBUG | Handling batch in langsmith mode
+urllib3.connectionpool._make_request | 2026-09-11 16:48:32,586 | DEBUG | https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34
+__main__.main | 2026-09-11 16:48:33,293 | INFO | extracted_info = RecipeSearchIntent(ingredients=['banana', 'turmeric', 'mango', 'boiled chicken', 'eggs'], dish=None, dietary_restrictions=[], cuisine=None, serving_size=None, additional_preferences=[])
+
+__main__.main | 2026-09-11 16:48:33,294 | INFO | parsed intent: {
+  "ingredients": [
+    "banana",
+    "turmeric",
+    "mango",
+    "boiled chicken",
+    "eggs"
+  ]
+}
+groq._base_client._build_request | 2026-09-11 16:48:33,308 | DEBUG | Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-86471da5-8c85-4f93-a7c9-d5519176328f', 'json_data': {'messages': [{'role': 'system', 'content': 'U are a helpful agent please try to search for recipes for now using the tool given on;ly use it if needed'}, {'role': 'user', 'content': '{\n  "ingredients": [\n    "banana",\n    "turmeric",\n    "mango",\n    "boiled chicken",\n    "eggs"\n  ]\n}'}], 'model': 'qwen/qwen3.8-27b', 'n': 1, 'reasoning_effort': None, 'reasoning_format': None, 'service_tier': 'on_demand', 'stop': None, 'stream': False, 'temperature': 0.6, 'tools': [{'type': 'function', 'function': {'name': 'search_recipe_in_web', 'description': 'Search the web broadly for recipe pages matching the user\'s recipe intent.\n\nUse this tool when external recipe information is needed, especially when\nthe user asks to find, discover, compare, or recommend recipes from the web,\nor when the request depends on recipes that may vary by source.\n\nThis is a DISCOVERY tool. It returns candidate recipe pages, titles,\nsnippets, URLs, and relevance scores. It does NOT guarantee that the\ncomplete recipe, ingredient quantities, or cooking instructions are present\nin the search result.\n\nBuild keywords from the user\'s extracted recipe intent rather than passing\nthe entire conversation. Include the dish, important ingredients, cuisine,\ndietary requirements, and other meaningful constraints.\n\nDo NOT use this tool when the user only asks for a generic recipe that can\nbe generated reliably from existing culinary knowledge and no current,\nsource-specific, or web-based information is required.\n\nArgs:\n    max_results: Maximum number of search results to return. Default is 5.\n    topic: Type of search vertical to execute. Options are "general", "news", or "finance". Default is "general".\n    include_answer: Whether to include a short text answer or summary generated from the results. Default is False.\n    include_raw_content: Whether to return the full, raw HTML or parsed body content of the search results. Default is False.\n    include_images: Whether to include image URLs in the search output. Default is False.\n    include_image_descriptions: Whether to extract and include text descriptions or alt-text for discovered images. Default is False.\n    search_depth: The thoroughness of the search engine crawling. Options are "basic" or "advanced". Default is "basic".\n    time_range: Filters results published within a specific window. Options are "day", "week", "month", "year", or None. Default is None.\n    include_domains: A strict list of specific domain strings to restrict the search to. Default is None.\n    exclude_domains: A list of specific domain strings to completely block or filter out from results. Default is None.\n\n\nReturns:\n    A dictionary containing the generated search query and normalized\n    candidate recipe results. Each result contains the title, URL, snippet,\n    and Tavily relevance score.', 'parameters': {'properties': {'search_query': {'type': 'string'}, 'max_results': {'default': 5, 'type': 'integer'}, 'topic': {'default': 'general', 'enum': ['general', 'news', 'finance'], 'type': 'string'}, 'include_answer': {'default': False, 'type': 'boolean'}, 'include_raw_content': {'default': False, 'type': 'boolean'}, 'include_images': {'default': False, 'type': 'boolean'}, 'include_image_descriptions': {'default': False, 'type': 'boolean'}, 'search_depth': {'default': 'basic', 'enum': ['basic', 'advanced'], 'type': 'string'}, 'time_range': {'default': None, 'enum': ['day', 'week', 'month', 'year'], 'type': 'string'}, 'include_domains': {'default': None, 'items': {'type': 'string'}, 'type': 'array'}, 'exclude_domains': {'default': None, 'items': {'type': 'string'}, 'type': 'array'}}, 'required': ['search_query'], 'type': 'object'}}}]}}
+groq._base_client.request | 2026-09-11 16:48:33,310 | DEBUG | Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+httpcore.connection.trace | 2026-09-11 16:48:33,313 | DEBUG | connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=None socket_options=None
+httpcore.connection.trace | 2026-09-11 16:48:33,323 | DEBUG | connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x00000178B468BB10>
+httpcore.connection.trace | 2026-09-11 16:48:33,324 | DEBUG | start_tls.started ssl_context=<ssl.SSLContext object at 0x00000178ADDAAA30> server_hostname='api.groq.com' timeout=None
+httpcore.connection.trace | 2026-09-11 16:48:33,342 | DEBUG | start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x00000178B470D220>
+httpcore.http11.trace | 2026-09-11 16:48:33,343 | DEBUG | send_request_headers.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:48:33,344 | DEBUG | send_request_headers.complete
+httpcore.http11.trace | 2026-09-11 16:48:33,345 | DEBUG | send_request_body.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:48:33,347 | DEBUG | send_request_body.complete
+httpcore.http11.trace | 2026-09-11 16:48:33,348 | DEBUG | receive_response_headers.started request=<Request [b'POST']>
+langsmith.client._send_compressed_multipart_req | 2026-09-11 16:48:33,817 | DEBUG | Sending compressed multipart request with context: trace=01a09030-d050-7fb3-804f-7ece7dabb7e0,id=01a09030-d050-7fb3-804f-7ece7dabb7e0; trace=01a09030-d050-7fb3-804f-7ece7dabb7e0,id=01a09030-d055-7153-a7fe-ed576e856e56; trace=01a09030-d050-7fb3-804f-7ece7dabb7e0,id=01a09030-d05a-7012-90bb-057e2f462633
+httpcore.http11.trace | 2026-09-11 16:48:34,081 | DEBUG | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 11 Sep 2026 11:18:36 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'bom'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'8000'), (b'x-ratelimit-remaining-requests', b'997'), (b'x-ratelimit-remaining-tokens', b'6331'), (b'x-ratelimit-reset-requests', b'4m19.2s'), (b'x-ratelimit-reset-tokens', b'12.517s'), (b'x-request-id', b'req_01m2831p45ey1s09qwsa6f2rry'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'set-cookie', b'__cf_bm=r5MZSnhHBXC7m16mH3FiT0C6zklwWrX02LEzGQLPXtQ-1789125515.3657453-1.0.1.1-6a5r_mIbWdFZ8N0_TVeT2B0oV2zsq_SujwtLKr.s2Ye58bh_9bHT6fFRAI3F2.gyVr6XerQzYMpW1fAy5lKb7izVQdRvrFgKvD0OkJd8lxXGfJHb8OJj88IiKJl8.nek; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Fri, 11 Sep 2026 11:48:36 GMT'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a39645c70b11a346-DEL'), (b'alt-svc', b'h3=":443"; ma=86400')])
+httpx._send_single_request | 2026-09-11 16:48:34,083 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+httpcore.http11.trace | 2026-09-11 16:48:34,085 | DEBUG | receive_response_body.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:48:34,086 | DEBUG | receive_response_body.complete
+httpcore.http11.trace | 2026-09-11 16:48:34,087 | DEBUG | response_closed.started
+httpcore.http11.trace | 2026-09-11 16:48:34,088 | DEBUG | response_closed.complete
+groq._base_client.request | 2026-09-11 16:48:34,089 | DEBUG | HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Fri, 11 Sep 2026 11:18:36 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'bom', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '8000', 'x-ratelimit-remaining-requests': '997', 'x-ratelimit-remaining-tokens': '6331', 'x-ratelimit-reset-requests': '4m19.2s', 'x-ratelimit-reset-tokens': '12.517s', 'x-request-id': 'req_01m2831p45ey1s09qwsa6f2rry', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'set-cookie': '__cf_bm=r5MZSnhHBXC7m16mH3FiT0C6zklwWrX02LEzGQLPXtQ-1789125515.3657453-1.0.1.1-6a5r_mIbWdFZ8N0_TVeT2B0oV2zsq_SujwtLKr.s2Ye58bh_9bHT6fFRAI3F2.gyVr6XerQzYMpW1fAy5lKb7izVQdRvrFgKvD0OkJd8lxXGfJHb8OJj88IiKJl8.nek; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Fri, 11 Sep 2026 11:48:36 GMT', 'strict-transport-security': 'max-age=15552000', 'content-encoding': 'gzip', 'cf-ray': 'a39645c70b11a346-DEL', 'alt-svc': 'h3=":443"; ma=86400'})
+urllib3.connectionpool._new_conn | 2026-09-11 16:48:34,100 | DEBUG | Starting new HTTPS connection (1): api.tavily.com:443
+urllib3.connectionpool._make_request | 2026-09-11 16:48:34,133 | DEBUG | https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34
+langsmith.client._send_compressed_multipart_req | 2026-09-11 16:48:34,637 | DEBUG | Sending compressed multipart request with context: trace=01a09030-d050-7fb3-804f-7ece7dabb7e0,id=01a09030-d05a-7012-90bb-057e2f462633; trace=01a09030-d050-7fb3-804f-7ece7dabb7e0,id=01a09030-d055-7153-a7fe-ed576e856e56; trace=01a09030-d050-7fb3-804f-7ece7dabb7e0,id=01a09030-d36d-7ff0-a06f-52c8dc54e874; trace=01a09030-d050-7fb3-804f-7ece7dabb7e0,id=01a09030-d36e-7ae0-b44b-1ef27fcacc22; trace=01a09030-d050-7fb3-804f-7ece7dabb7e0,id=01a09030-d371-7f22-9680-d3411f984e6b
+urllib3.connectionpool._make_request | 2026-09-11 16:48:34,953 | DEBUG | https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34
+urllib3.connectionpool._make_request | 2026-09-11 16:48:36,642 | DEBUG | https://api.tavily.com:443 "POST /search HTTP/1.1" 200 1852
+groq._base_client._build_request | 2026-09-11 16:48:36,659 | DEBUG | Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-7b11ee13-ef3d-484d-8167-2a4c322a4316', 'json_data': {'messages': [{'role': 'system', 'content': 'U are a helpful agent please try to search for recipes for now using the tool given on;ly use it if needed'}, {'role': 'user', 'content': '{\n  "ingredients": [\n    "banana",\n    "turmeric",\n    "mango",\n    "boiled chicken",\n    "eggs"\n  ]\n}'}, {'role': 'assistant', 'content': None, 'tool_calls': [{'type': 'function', 'id': 'pz1r6wedv', 'function': {'name': 'search_recipe_in_web', 'arguments': '{"search_query": "banana turmeric mango boiled chicken eggs recipe"}'}}]}, {'role': 'tool', 'content': '{"query": "banana turmeric mango boiled chicken eggs recipe", "follow_up_questions": null, "answer": null, "images": [], "results": [{"url": "https://www.shutterbean.com/2019/mango-turmeric-smoothie", "title": "Mango Turmeric Smoothie", "content": "turmeric mixed with the sweetness of the mango and banana. no banana, fresh turmeric instead of powder,all other ingredients and 3 raw eggs", "score": 0.7864589, "raw_content": null, "id": "7add6d-00"}, {"url": "https://www.youtube.com/watch?v=I4c939Cy5mc", "title": "Spiced Mango Banana Farm Smoothie Recipe at Wa Samaki in ...", "content": "turmeric, mango, and banana. 1 cup mango flesh, if frozen cut into cubes 3 bananas, cut into pieces 1in Ginger, peeled 1in Turmeric, peeled 1 1", "score": 0.7527403, "raw_content": null, "id": "c50a57-01"}, {"url": "https://www.facebook.com/groups/2947024365415476/posts/8758524934265361", "title": "How to make a mango and turmeric smoothie", "content": "In a blender, combine the mango cubes, sliced banana, coconut milk, ground turmeric, ground ginger, and honey or agave syrup if using. 2. Add", "score": 0.708616, "raw_content": null, "id": "c9280e-02"}, {"url": "https://www.instagram.com/reel/CbiDYjRlaG4", "title": "Mango Turmeric Banana Smoothie🥭🍌🔥 Who doesn\'t love ...", "content": "Ingredients (Serves 1-2): 1 ripe mango, approx 200g peeled and diced 250ml / 1 cup milk (whole milk or oat milk both work) 1 tbsp honey A", "score": 0.6769403, "raw_content": null, "id": "3ea53a-03"}, {"url": "https://www.saveur.com/recipes/banana-mango-smoothie-turmeric", "title": "Banana Mango Smoothie with Fresh Turmeric Recipe", "content": "To a blender, add the milk, mangoes, banana, turmeric, and ½ cup of ice cubes. Blend until smooth, pour into a glass, and serve immediately.", "score": 0.67555064, "raw_content": null, "id": "1fa223-04"}], "response_time": 1.06, "request_id": "a4a6da7d-6c3c-4abe-9c77-984a88ea8d1c"}', 'tool_call_id': 'pz1r6wedv'}], 'model': 'qwen/qwen3.8-27b', 'n': 1, 'reasoning_effort': None, 'reasoning_format': None, 'service_tier': 'on_demand', 'stop': None, 'stream': False, 'temperature': 0.6, 'tools': [{'type': 'function', 'function': {'name': 'search_recipe_in_web', 'description': 'Search the web broadly for recipe pages matching the user\'s recipe intent.\n\nUse this tool when external recipe information is needed, especially when\nthe user asks to find, discover, compare, or recommend recipes from the web,\nor when the request depends on recipes that may vary by source.\n\nThis is a DISCOVERY tool. It returns candidate recipe pages, titles,\nsnippets, URLs, and relevance scores. It does NOT guarantee that the\ncomplete recipe, ingredient quantities, or cooking instructions are present\nin the search result.\n\nBuild keywords from the user\'s extracted recipe intent rather than passing\nthe entire conversation. Include the dish, important ingredients, cuisine,\ndietary requirements, and other meaningful constraints.\n\nDo NOT use this tool when the user only asks for a generic recipe that can\nbe generated reliably from existing culinary knowledge and no current,\nsource-specific, or web-based information is required.\n\nArgs:\n    max_results: Maximum number of search results to return. Default is 5.\n    topic: Type of search vertical to execute. Options are "general", "news", or "finance". Default is "general".\n    include_answer: Whether to include a short text answer or summary generated from the results. Default is False.\n    include_raw_content: Whether to return the full, raw HTML or parsed body content of the search results. Default is False.\n    include_images: Whether to include image URLs in the search output. Default is False.\n    include_image_descriptions: Whether to extract and include text descriptions or alt-text for discovered images. Default is False.\n    search_depth: The thoroughness of the search engine crawling. Options are "basic" or "advanced". Default is "basic".\n    time_range: Filters results published within a specific window. Options are "day", "week", "month", "year", or None. Default is None.\n    include_domains: A strict list of specific domain strings to restrict the search to. Default is None.\n    exclude_domains: A list of specific domain strings to completely block or filter out from results. Default is None.\n\n\nReturns:\n    A dictionary containing the generated search query and normalized\n    candidate recipe results. Each result contains the title, URL, snippet,\n    and Tavily relevance score.', 'parameters': {'properties': {'search_query': {'type': 'string'}, 'max_results': {'default': 5, 'type': 'integer'}, 'topic': {'default': 'general', 'enum': ['general', 'news', 'finance'], 'type': 'string'}, 'include_answer': {'default': False, 'type': 'boolean'}, 'include_raw_content': {'default': False, 'type': 'boolean'}, 'include_images': {'default': False, 'type': 'boolean'}, 'include_image_descriptions': {'default': False, 'type': 'boolean'}, 'search_depth': {'default': 'basic', 'enum': ['basic', 'advanced'], 'type': 'string'}, 'time_range': {'default': None, 'enum': ['day', 'week', 'month', 'year'], 'type': 'string'}, 'include_domains': {'default': None, 'items': {'type': 'string'}, 'type': 'array'}, 'exclude_domains': {'default': None, 'items': {'type': 'string'}, 'type': 'array'}}, 'required': ['search_query'], 'type': 'object'}}}]}}
+groq._base_client.request | 2026-09-11 16:48:36,664 | DEBUG | Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+httpcore.http11.trace | 2026-09-11 16:48:36,667 | DEBUG | send_request_headers.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:48:36,668 | DEBUG | send_request_headers.complete
+httpcore.http11.trace | 2026-09-11 16:48:36,668 | DEBUG | send_request_body.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:48:36,669 | DEBUG | send_request_body.complete
+httpcore.http11.trace | 2026-09-11 16:48:36,670 | DEBUG | receive_response_headers.started request=<Request [b'POST']>
+langsmith.client._send_compressed_multipart_req | 2026-09-11 16:48:37,219 | DEBUG | Sending compressed multipart request with context: trace=01a09030-d050-7fb3-804f-7ece7dabb7e0,id=01a09030-d371-7f22-9680-d3411f984e6b; trace=01a09030-d050-7fb3-804f-7ece7dabb7e0,id=01a09030-d36e-7ae0-b44b-1ef27fcacc22; trace=01a09030-d050-7fb3-804f-7ece7dabb7e0,id=01a09030-d36d-7ff0-a06f-52c8dc54e874; trace=01a09030-d050-7fb3-804f-7ece7dabb7e0,id=01a09030-dd69-7b03-80b2-a6117cf6651b; trace=01a09030-d050-7fb3-804f-7ece7dabb7e0,id=01a09030-dd6c-7b62-8d99-78e3f79e6543
+urllib3.connectionpool._make_request | 2026-09-11 16:48:37,537 | DEBUG | https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34
+httpcore.http11.trace | 2026-09-11 16:48:37,775 | DEBUG | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 11 Sep 2026 11:18:39 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'bom'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'8000'), (b'x-ratelimit-remaining-requests', b'996'), (b'x-ratelimit-remaining-tokens', b'5114'), (b'x-ratelimit-reset-requests', b'5m45.6s'), (b'x-ratelimit-reset-tokens', b'24.145s'), (b'x-request-id', b'req_01m2831sc5eys8qb4qnq9sym0g'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a39645dbcaa9a346-DEL'), (b'alt-svc', b'h3=":443"; ma=86400')])
+httpx._send_single_request | 2026-09-11 16:48:37,777 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+httpcore.http11.trace | 2026-09-11 16:48:37,778 | DEBUG | receive_response_body.started request=<Request [b'POST']>
+httpcore.http11.trace | 2026-09-11 16:48:37,781 | DEBUG | receive_response_body.complete
+httpcore.http11.trace | 2026-09-11 16:48:37,781 | DEBUG | response_closed.started
+httpcore.http11.trace | 2026-09-11 16:48:37,782 | DEBUG | response_closed.complete
+groq._base_client.request | 2026-09-11 16:48:37,783 | DEBUG | HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Fri, 11 Sep 2026 11:18:39 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'bom', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '8000', 'x-ratelimit-remaining-requests': '996', 'x-ratelimit-remaining-tokens': '5114', 'x-ratelimit-reset-requests': '5m45.6s', 'x-ratelimit-reset-tokens': '24.145s', 'x-request-id': 'req_01m2831sc5eys8qb4qnq9sym0g', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'strict-transport-security': 'max-age=15552000', 'content-encoding': 'gzip', 'cf-ray': 'a39645dbcaa9a346-DEL', 'alt-svc': 'h3=":443"; ma=86400'})
+langsmith.client.keep_thread_active | 2026-09-11 16:48:37,853 | DEBUG | Main thread is dead, stopping compression thread
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:48:37,853 | DEBUG | Compression thread final flush: trace_count=3
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:48:37,856 | DEBUG | Compression thread final flush: sending 5125 bytes
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:48:37,858 | DEBUG | Compression thread final flush: thread pool shutdown, sending synchronously
+langsmith.client._send_compressed_multipart_req | 2026-09-11 16:48:37,858 | DEBUG | Sending compressed multipart request with context: trace=01a09030-d050-7fb3-804f-7ece7dabb7e0,id=01a09030-dd6c-7b62-8d99-78e3f79e6543; trace=01a09030-d050-7fb3-804f-7ece7dabb7e0,id=01a09030-dd69-7b03-80b2-a6117cf6651b; trace=01a09030-d050-7fb3-804f-7ece7dabb7e0,id=01a09030-d050-7fb3-804f-7ece7dabb7e0
+langsmith.client.keep_thread_active | 2026-09-11 16:48:37,915 | DEBUG | Main thread is dead, stopping tracing thread
+langsmith.client.tracing_control_thread_func | 2026-09-11 16:48:37,915 | DEBUG | Tracing thread draining queue on exit: qsize=0
+langsmith.client.tracing_control_thread_func | 2026-09-11 16:48:37,919 | DEBUG | Tracing control thread is shutting down
+urllib3.connectionpool._make_request | 2026-09-11 16:48:38,180 | DEBUG | https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:48:38,181 | DEBUG | Compression thread final flush: sync send completed
+langsmith.client.tracing_control_thread_func_compress_parallel | 2026-09-11 16:48:38,182 | DEBUG | Compressed traces control thread is shutting down
+langsmith.client.close_session | 2026-09-11 16:48:38,183 | DEBUG | Closing Client.session
+langsmith.client.close_session | 2026-09-11 16:48:38,187 | DEBUG | Closing Client.session
+httpcore.connection.trace | 2026-09-11 16:48:38,254 | DEBUG | close.started
+httpcore.connection.trace | 2026-09-11 16:48:38,255 | DEBUG | close.complete
+httpcore.connection.trace | 2026-09-11 16:48:38,256 | DEBUG | close.started
+httpcore.connection.trace | 2026-09-11 16:48:38,258 | DEBUG | close.complete

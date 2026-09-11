@@ -1,4 +1,4 @@
-from langchain_core.promts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 
 
 extraction_prompt = ChatPromptTemplate([
